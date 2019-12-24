@@ -776,4 +776,7 @@ p {
 .test label{
        background: transparent;
 }
+table{
+width:100% !important;	
+}
 /* end */

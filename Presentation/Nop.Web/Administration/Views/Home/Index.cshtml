@@ -37,65 +37,13 @@
                 </div>
             }
             @Html.Widget("admin_dashboard_commonstatistics_after")
-            @if (!Model.IsLoggedInAsVendor && (canManageOrders || canManageCustomers))
-            {
-                <div class="row">
-                    @if (!Model.IsLoggedInAsVendor && canManageOrders)
-                    {
-                        <div class="col-md-6">
-                            @Html.Action("OrderStatistics", "Order")
-                        </div>
-                    }
-                    @if (!Model.IsLoggedInAsVendor && canManageCustomers)
-                    {
-                        <div class="col-md-6">
-                            @Html.Action("CustomerStatistics", "Customer")
-                        </div>
-                    }
-                </div>
-            }
+         
             @Html.Widget("admin_dashboard_customerordercharts_after")
-            @if (!Model.IsLoggedInAsVendor && canManageOrders)
-            {
-                <div class="row">
-                    <div class="col-md-8">
-                        @Html.Action("OrderAverageReport", "Order")
-                    </div>
-                    <div class="col-md-4">
-                        @Html.Action("OrderIncompleteReport", "Order")
-                    </div>
-                </div>
-            }
+         
             @Html.Widget("admin_dashboard_orderreports_after")
-            @if (!Model.IsLoggedInAsVendor && (canManageOrders || canManageProducts))
-            {
-                <div class="row">
-                    @if (canManageOrders)
-                    {
-                        <div class="col-md-8">
-                            @Html.Action("LatestOrders", "Order")
-                        </div>
-                    }
-                    <div class="col-md-4">
-                        @if (canManageProducts)
-                        {
-                            @Html.Action("PopularSearchTermsReport", "Common")
-                        }
-                    </div>
-                </div>
-            }
+           
             @Html.Widget("admin_dashboard_latestorders_searchterms_after")
-            @if (canManageOrders)
-            {
-                <div class="row">
-                    <div class="col-md-6">
-                        @Html.Action("BestsellersBriefReportByQuantity", "Order")
-                    </div>
-                    <div class="col-md-6">
-                        @Html.Action("BestsellersBriefReportByAmount", "Order")
-                    </div>
-                </div>
-            }
+        
             @Html.Widget("admin_dashboard_bottom")
         </div>
     </div>

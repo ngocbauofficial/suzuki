@@ -66,7 +66,25 @@ namespace Nop.Admin.Extensions
         {
             return AutoMapperConfiguration.Mapper.Map(source, destination);
         }
-        
+        #region Popup
+
+        public static PopupModel ToModel(this Popup entity)
+        {
+            return entity.MapTo<Popup, PopupModel>();
+        }
+
+        public static Popup ToEntity(this PopupModel model)
+        {
+            return model.MapTo<PopupModel, Popup>();
+        }
+
+        public static Popup ToEntity(this PopupModel model, Popup destination)
+        {
+            return model.MapTo(destination);
+        }
+
+        #endregion
+
         #region Category
 
         public static CategoryModel ToModel(this Category entity)

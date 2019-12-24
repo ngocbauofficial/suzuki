@@ -1,0 +1,96 @@
+﻿@{
+    var defaultGridPageSize = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().DefaultGridPageSize;
+    var gridPageSizes = EngineContext.Current.Resolve<Nop.Core.Domain.Common.AdminAreaSettings>().GridPageSizes;
+
+    //page title
+    ViewBag.Title = T("Admin.ContentManagement.Popup").Text;
+    //active menu item (system name)
+    Html.SetActiveMenuItemSystemName("ManagePopup");
+}
+<div class="content-header clearfix">
+    <h1 class="pull-left">
+        Popup
+    </h1>
+    <div class="pull-right">
+        <a href="@Url.Action("Insert")" class="btn bg-blue">
+            <i class="fa fa-plus-square"></i>
+            @T("Admin.Common.AddNew")
+        </a>
+    </div>
+</div>
+
+<div class="content">
+    <div class="form-horizontal">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="newsitem-grid"></div>
+                    <script>
+                        $(document).ready(function() {
+                            $("#newsitem-grid").kendoGrid({
+                                dataSource: {
+                                    type: "json",
+                                    transport: {
+                                        read: {
+                                            url: "@Html.Raw(Url.Action("List", "Popup"))",
+                                            type: "POST",
+                                            dataType: "json",
+                                            data: additionalData
+                                        }
+                                    },
+                                    schema: {
+                                        data: "Data",
+                                        total: "Total",
+                                        errors: "Errors"
+                                    },
+                                    error: function(e) {
+                                        display_kendoui_grid_error(e);
+                                        // Cancel the changes
+                                        this.cancelChanges();
+                                    },
+                                    pageSize: @(defaultGridPageSize),
+                                    serverPaging: true,
+                                    serverFiltering: true,
+                                    serverSorting: true
+                                },
+                                pageable: {
+                                    refresh: true,
+                                    pageSizes: [@(gridPageSizes)]
+                                },
+                                editable: {
+                                    confirmation: "@T("Admin.Common.DeleteConfirmation")",
+                                    mode: "inline"
+                                },
+                                scrollable: false,
+                                columns: [
+                                    {
+                                        field: "Id",
+                                        title: "Id"
+                                    },
+                                    {
+                                        field: "Link",
+                                        title: "Link"
+                                    },
+                                    {
+                                        field: "Time",
+                                        title: "Time"
+                                    },
+                                    {
+                                        field: "Status",
+                                        title: "@T("Admin.Catalog.Products.Fields.Published")",
+                                        width: 100,
+                                        template: '# if(Status) {# <i class="fa fa-check true-icon"></i> #} else {# <i class="fa fa-close false-icon"></i> #} #'
+                                    },
+                                    {
+                                        field: "Id",
+                                        title: "@T("Admin.Common.Edit")",
+                                        width: 100,
+                                        template: '<a href="Edit/#=Id#">@T("Admin.Common.Edit")</a>'
+                                    }
+                                ]
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>

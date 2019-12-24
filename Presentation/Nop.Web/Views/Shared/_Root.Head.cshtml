@@ -4,12 +4,11 @@
 @{
     var displayMiniProfiler = EngineContext.Current.Resolve<Nop.Core.Domain.StoreInformationSettings>().DisplayMiniProfilerInPublicStore;
 
-    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/bootstrap.min.css");
-    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/owl.carousel.min.css");
+	 Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/bootstrap.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/owl.carousel.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/owl.theme.default.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/lightslider.min.css");
-    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/swiper.min.css");
+ 
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/jquery.mmenu.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/font.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/jquery.mmenu.positioning.css");
@@ -50,12 +49,13 @@
  
     @Html.Partial("Head")
     @Html.Widget("head_html_tag")
+	<link href="/Themes/DefaultClean/Content/css/swiper.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+		  
     @Html.NopCssFiles(this.Url, ResourceLocation.Head)
     @Html.NopScripts(this.Url, ResourceLocation.Head)
-    @RenderSection("header", required: false)
-
+	  @RenderSection("header", required: false)
 
 
     @Html.NopCanonicalUrls()
@@ -74,7 +74,57 @@
     @Html.NopCssFiles(this.Url, ResourceLocation.Foot)
     @Html.NopScripts(this.Url, ResourceLocation.Foot)
     @RenderSection("scripts", required: false)
+      <script>
+	     $(function () {
+        $('nav#menu').mmenu({
+            "extensions": ["position-right"],
+            "navbars": [
+                {
+                    "position": "top",
+                    "content": [
+                        "breadcrumbs",
+                        "close"
+                    ]
+                }
+            ]
+   
+        });
+    });
+    $('#menu li a').click(function () {
+
+        //console.log("Clicked");
+        $('#menu li a.active-2').removeClass('active-2');
+        $(this).addClass('active-2');
+    });
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 850) {
+            $('.navi').addClass('fixed-2');
+        } else {
+            $('.navi').removeClass('fixed-2');
+        }
+    })
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 270) {
+            $('.navi-2').addClass('fixed-2');
+        } else {
+            $('.navi-2').removeClass('fixed-2');
+        }
+    })
+    $(".toggle-next ").click(function () {
+        event.preventDefault();
+        $(this).next().slideToggle();
+        $(this).toggleClass('active');
+    });
+    
+    $(".menu-toggle").click(function(){
+        $(".menu-mb-navi").toggle();
+    });
+    $(".menu-mb-navi li a").click(function () {
+        $(".menu-mb-navi").addClass('.close-item');
+        $(".menu-mb-navi").toggle();
+    });
       
+	  </script>
    
    
 </body>

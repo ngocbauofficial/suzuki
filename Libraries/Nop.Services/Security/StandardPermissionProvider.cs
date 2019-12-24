@@ -29,6 +29,8 @@ namespace Nop.Services.Security
         public static readonly PermissionRecord ManageAffiliates = new PermissionRecord { Name = "Admin area. Manage Affiliates", SystemName = "ManageAffiliates", Category = "Promo" };
         public static readonly PermissionRecord ManageCampaigns = new PermissionRecord { Name = "Admin area. Manage Campaigns", SystemName = "ManageCampaigns", Category = "Promo" };
         public static readonly PermissionRecord ManageDiscounts = new PermissionRecord { Name = "Admin area. Manage Discounts", SystemName = "ManageDiscounts", Category = "Promo" };
+        public static readonly PermissionRecord ManagePopup = new PermissionRecord { Name = "Admin area. Manage Popup", SystemName = "ManagePopup", Category = "Promo" };
+        public static readonly PermissionRecord ManagePopupForm = new PermissionRecord { Name = "Admin area. Manage PopupForm", SystemName = "ManagePopupForm", Category = "Promo" };
         public static readonly PermissionRecord ManageNewsletterSubscribers = new PermissionRecord { Name = "Admin area. Manage Newsletter Subscribers", SystemName = "ManageNewsletterSubscribers", Category = "Promo" };
         public static readonly PermissionRecord ManagePolls = new PermissionRecord { Name = "Admin area. Manage Polls", SystemName = "ManagePolls", Category = "Content Management" };
         public static readonly PermissionRecord ManageNews = new PermissionRecord { Name = "Admin area. Manage News", SystemName = "ManageNews", Category = "Content Management" };
@@ -118,7 +120,9 @@ namespace Nop.Services.Security
                 EnableShoppingCart,
                 EnableWishlist,
                 PublicStoreAllowNavigation,
-                AccessClosedStore
+                AccessClosedStore,
+                ManagePopup,
+                ManagePopupForm
             };
         }
 
@@ -180,7 +184,9 @@ namespace Nop.Services.Security
                         EnableShoppingCart,
                         EnableWishlist,
                         PublicStoreAllowNavigation,
-                        AccessClosedStore
+                        AccessClosedStore,
+                        ManagePopupForm,
+                        ManagePopup
                     }
                 },
                 new DefaultPermissionRecord 

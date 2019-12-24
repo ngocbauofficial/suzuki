@@ -35,7 +35,30 @@ $(document).ready(function () {
             $('#image-gallery').removeClass('cS-hidden');
         }
     });
-
+    var swiper2 = new Swiper('.sub-tab-slider-2', {
+        slidesPerView: 4,
+        spaceBetween: 0,
+        // init: false,
+        loop: false,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            1024: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 2,
+            },
+            640: {
+                slidesPerView: 1,
+            },
+            320: {
+                slidesPerView: 1,
+            }
+        }
+    });
     $('.owl-carousel').owlCarousel({
         loop: true,
         margin: 10,
@@ -84,45 +107,7 @@ $(document).ready(function () {
     $(".aaa").mouseleave(function () {
         $(".bbb").css("opacity", 1);
     })
-    $(function () {
-        $('nav#menu').mmenu({
-            extensions: ["position-right"]
-        });
-    });
-    $('#menu li a').click(function () {
-
-        //console.log("Clicked");
-        $('#menu li a.active-2').removeClass('active-2');
-        $(this).addClass('active-2');
-    });
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 850) {
-            $('.navi').addClass('fixed-2');
-        } else {
-            $('.navi').removeClass('fixed-2');
-        }
-    })
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 270) {
-            $('.navi-2').addClass('fixed-2');
-        } else {
-            $('.navi-2').removeClass('fixed-2');
-        }
-    })
-    $(".toggle-next ").click(function () {
-        event.preventDefault();
-        $(this).next().slideToggle();
-        $(this).toggleClass('active');
-    });
-    
-    $(".menu-toggle").click(function(){
-        $(".menu-mb-navi").toggle();
-    });
-    $(".menu-mb-navi li a").click(function () {
-        $(".menu-mb-navi").addClass('.close-item');
-        $(".menu-mb-navi").toggle();
-    });
-      
+ 
     
     // $(".menu-toggle").click(function () {
     //     // $('menu-mb-navi').removeClass('show');

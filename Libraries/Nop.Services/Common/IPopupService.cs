@@ -1,4 +1,5 @@
-﻿using Nop.Core.Domain.Common;
+﻿using Nop.Core;
+using Nop.Core.Domain.Common;
 using System.Collections.Generic;
 
 namespace Nop.Services.Common
@@ -11,8 +12,9 @@ namespace Nop.Services.Common
         void Insert(Popup popup);
 
         void Edit(Popup popup);
+        Popup GetById(int id);
 
-
-        IList<Popup> GetAll();
+        IPagedList<Popup> GetAll(
+          int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false);
     }
 }

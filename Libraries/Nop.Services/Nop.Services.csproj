@@ -204,6 +204,7 @@
     <Compile Include="Catalog\ProductAttributeFormatter.cs" />
     <Compile Include="Catalog\ProductAttributeParser.cs" />
     <Compile Include="Common\IPopupService.cs" />
+    <Compile Include="Common\PopupService.cs" />
     <Compile Include="Directory\AgencyService.cs" />
     <Compile Include="Directory\EstimateService.cs" />
     <Compile Include="Directory\IAgencyService.cs" />

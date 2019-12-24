@@ -164,10 +164,7 @@
         </div>
   
 *@
-@section Breadcrumb
-        {
-    @Html.Partial("_ProductBreadcrumb", Model.Breadcrumb)
-}
+
 <div class="slide-background">
     <div class="video container">
         <video src="@Model.Video" playsinline loop muted autoplay width="100%" height="50%"> </video>
@@ -179,7 +176,7 @@
     <div class="navi">
         <div class="container">
             <div class="nav-item name-product d-inline-block float-left" style="height: 40px">
-                <span class="nav-link2 active text-uppercase">SWIFT</span>
+                <span class="nav-link2 active text-uppercase">@Model.Name</span>
             </div>
             <!-- <div class="clear"></div> -->
             <ul class="nav" role="tablist">
@@ -255,17 +252,20 @@
     </div>
 </section>
 
-<section id="1">
-    <!-- <div class="container "> -->
-    <div class="container">
-        <div class="view360ct">
-            <iframe onload="iFrameHeight()" id="blockrandom" name=""
-                    src="tool1/large/main.html" width="100%" height="800"
-                    scrolling="no" frameborder="0" class="viewfull" __idm_frm__="36" style="height: 850px;"></iframe>
-        </div>
-    </div>
-    <!-- </div> -->
-</section>
+
+ <section id="1">
+                <!-- <div class="container "> -->
+                <div class="container">
+                    <div class="view360ct">
+                        <iframe onload="iFrameHeight()" id="blockrandom" name=""
+                            src="~/Content/360/@Model.Id/large/main.html" width="100%" height="800"
+                            scrolling="no" frameborder="0" class="viewfull" __idm_frm__="36" style="height: 850px;"></iframe>
+                    </div>
+                </div>
+                <!-- </div> -->
+            </section>
+
+
 <section id="2">
     <div class="container">
         <div class="mode">
@@ -297,25 +297,25 @@
             <div class="col-md-6 mt-2 pr-1 mb-1">
                 <div class="popup-gallery">
                     <a href="@Model.Ngoaithat1.FullSizeImageUrl" title="@Model.TextNgoaithat1">
-                        <img src="@Model.Ngoaithat1.FullSizeImageUrl" width="100%" height="100%">
+                        <img src="@Model.Ngoaithat1.FullSizeImageUrl" class="img-fluid" style="    height: 465px;">
                     </a>
                 </div>
             </div>
             <div class="col-md-6 mt-2 pl-1 mb-1">
                 <div class="popup-gallery">
                     <a href="@Model.Ngoaithat2.FullSizeImageUrl" title="@Model.TextNgoaithat2">
-                        <img src="@Model.Ngoaithat2.FullSizeImageUrl" width="100%" height="100%">
+                        <img src="@Model.Ngoaithat2.FullSizeImageUrl" class="img-fluid" style="    height: 465px;">
                     </a>
                 </div>
             </div>
-            <div class="col-md-4 fix-img ">
+            <div class="col-md-4 fix-img pr-0 ">
                 <div class="popup-gallery">
                     <a href="@Model.Ngoaithat3.FullSizeImageUrl" title="@Model.TextNgoaithat3">
                         <img src="@Model.Ngoaithat3.FullSizeImageUrl" width="100%" height="100%">
                     </a>
                 </div>
             </div>
-            <div class="col-md-4 fix-img fix-img-fix">
+            <div class="col-md-4 fix-img pr-0 fix-img-fix">
                 <div class="popup-gallery">
                     <a href="@Model.Ngoaithat4.FullSizeImageUrl" title="@Model.TextNgoaithat4">
                         <img src="@Model.Ngoaithat4.FullSizeImageUrl" width="100%" height="100%">
@@ -491,7 +491,7 @@
 <section id="6">
     <div class="container phu-kien">
         <div class="exterior ">
-            <h1 class="text-uppercase text-center ">ngoại thất</h1>
+            <h1 class="text-uppercase text-center ">Phụ Kiện</h1>
 
         </div>
         <div class="fix-final mt-4 m-0 row p-0">
@@ -652,4 +652,29 @@
                 });
             });
 </script>
+       <script>
+            $(function () {
+                setIFrameSize();
+                $(window).resize(function () {
+                    setIFrameSize();
+                });
+            });
+
+            function setIFrameSize() {
+                var ogWidth = 700;
+                var ogHeight = 600;
+                var ogRatio = ogWidth / ogHeight;
+
+                var windowWidth = $(window).width();
+                if (windowWidth < 480) {
+                    var parentDivWidth = $(".iframe-class").parent().width();
+                    var newHeight = (parentDivWidth / ogRatio);
+                    $(".iframe-class").addClass("iframe-class-resize");
+                    $(".iframe-class-resize").css("width", parentDivWidth);
+                    $(".iframe-class-resize").css("height", newHeight);
+                } else {
+                    $(".iframe-class").removeClass("iframe-class-resize").css({ width: '', height: '' });
+                }
+            }
+        </script>
 }

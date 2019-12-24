@@ -7,7 +7,30 @@ h1, h2, h3 {
 }
 
 .container {
-    max-width: 1200px !important;
+    max-width: 1300px !important;
+}
+.phu-kien .fix-final img {
+    height: 202px;
+    margin-bottom: 10px;
+}
+
+.test-flex {
+    flex: 0 0 35.333333%;
+    max-width: 35.333333%;
+	
+}
+.test-flex img{
+	height: 414px !important;
+    width: 446px !important;
+}
+.test-flex-1 {
+    flex: 0 0 64.666667%;
+    max-width: 64.666667%;
+}
+.test-flex-1 img{
+	    width: 97%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .row {
@@ -125,7 +148,7 @@ header nav ul:nth-of-type(2) li {
     display: inline-block;
     margin: 0;
     margin-right: 0px;
-    padding: 3px 5px;
+    padding: 5px 5px;
     margin-right: -3px;
     font-size: 140%;
   
@@ -138,12 +161,15 @@ header nav ul:nth-of-type(2) li {
 .news-wapper{
     background-color: #003145;
 }
+.breadcrumb{
+display:none;	
+}
 header nav ul:nth-of-type(2) li a {
     display: inline-block;
-    width: 135px;
-    padding: 4px 6px 3.4px 8px;
+    width: 131px;
+      
     color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     text-decoration: none;
     font-weight: 600;
     font-family: 'Open Sans';
@@ -288,6 +314,7 @@ header nav ul:nth-of-type(2) li a:hover {
     font-family: 'Open Sans';
     font-style: normal;
     color: black;
+	    margin-top: 20px;
 }
 .slide-nivor{
     background-color:#021822;
@@ -1553,4 +1580,75 @@ select.form-control:not([size]):not([multiple]) {
 }
 select:focus,input:focus{
 box-shadow:unset !important;
+}
+@media only screen and (max-width: 600px) {
+   #blockrandom{
+       height: 440px !important;
+   }
+  }
+.form-search{
+margin: auto;
+  
+    width: 251px;
+}
+.mo-ta-new h3{
+	    color: black;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+.mo-ta-new p{
+	text-align:left;
+    color: black;
+	    font-weight: lighter;
+	    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 25px;
+    -webkit-line-clamp: 3;
+    height: 75px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.title-br{
+	    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+.fix-brochure a{
+	font-size:15px;
+	    border: 1px solid;
+    padding: 10px 40px;
+    background: #01334c;
+    color: white;
+    font-weight: 600;
+    
+}
+.fix-brochure a:hover{
+	background:white;
+	color:black;
+	transition:0.5s;
+}
+.img-br{
+	margin-top:20px;
+}
+.not-found-page{
+	    min-height: 154px;
+}
+.not-found-page h1{
+	        text-align: center;
+    transform: translateY(50%);
+}
+.slide-3-mobile .swiper-slide a img{
+width: 20px;
+    margin-right: 6px;
+    transform: translateY(-2px);	
+}
+.slide-3-mobile .swiper-slide a {
+	font-size: 13px;
+	}
+.mm-listitem__text{
+text-transform: capitalize;
+}
+.selectcars label{
+	white-space: nowrap;
 }

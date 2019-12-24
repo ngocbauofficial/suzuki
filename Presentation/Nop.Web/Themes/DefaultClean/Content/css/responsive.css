@@ -204,6 +204,17 @@
     .navi-2 {
         display: block;
     }
+	.news-item-page p img{
+	max-width:100% !important;
+		height:auto !important;
+	}
+	.news-item-page table{
+		width:100% !important;
+		height:100% !important;
+	}
+	.newpage .full-view{
+		padding:0 	!important
+	}
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
@@ -214,6 +225,17 @@
         width: 175px;
         font-size: 20px;
     }
+	.news-item-page p img{
+	max-width:100% !important;
+		height:auto !important;
+	}
+	.news-item-page table{
+		width:100% !important;
+		height:100% !important;
+	}
+	.newpage .full-view{
+		padding:0 	!important
+	}
 }
 
 @media screen and (min-width: 421px) and (max-width: 575px) {
@@ -234,6 +256,50 @@
     .fix-bot {
         display: none !important;
     }
+	.contact-font span,.text-left span,.follow-title{
+	font-size:14px;	
+	}
+	.news-item-page p img{
+	max-width:100% !important;
+		height:auto !important;
+	}
+	.news-item-page table{
+		width:100% !important;
+		height:100% !important;
+	}
+	.newpage .full-view{
+		padding:0 	!important
+	}
+	.news-item-page h1{
+	font-size:14pt;	
+	}
+	.news-item-page h2,.news-item-page h3{
+	font-size:1rem;
+		text-align:left;
+		padding:5px 0;
+	}
+	.fix-final{
+		display:none;
+	}
+	.col-md-6{
+		  padding-right: 15px !important;
+    padding-left: 15px !important;
+	}
+	.col-md-6 .popup-gallery img,.col-md-4 .popup-gallery img{
+		height: auto !important;
+	}
+	.fix-img{
+		    padding-right: 15px !important;
+    padding-left: 15px !important;
+		    margin: 6px 0;
+	}
+	.popup-gallery img{
+		height: 100px !important;
+		max-width:100%;
+	}
+	.exterior .galary img{
+		height:auto !important;
+	}
     .find-local-text h1 {
         font-size: 20px;
     }
@@ -305,7 +371,7 @@
         font-size: 30px;
     }
     .res {
-        padding-left: 15px;
+        
     }
     .fix-mm {
         margin-left: 0px;
@@ -344,6 +410,7 @@
     .mode h1, .exterior h1, .furniture h1, .specifications h1, .price-list h1 {
         font-size: 1rem;
         padding-top: 1.5rem !important;
+		margin-top:15px;
     }
     .section-title {
         font-size: 20px;
