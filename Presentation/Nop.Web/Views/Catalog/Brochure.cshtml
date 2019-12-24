@@ -1,0 +1,23 @@
+﻿
+@model List<ProductOverviewModel>
+@using Nop.Web.Models.Catalog;
+
+<section class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 com-12">
+                <div class="img-br">
+                    <img src="@item.DefaultPictureModel.ImageUrl"class="img-fluid" title="" alt="" />
+                </div>
+                <div class="title-br">
+                    @item.Name
+                </div>
+                <div>
+                    <a href="@Url.RouteUrl("GetSampleDownload", new { productid = item.Id })"> Tải Brochure</a>
+                </div>
+            </div>
+        }
+       
+    </div>
+</section>

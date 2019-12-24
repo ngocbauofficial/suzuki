@@ -1,0 +1,287 @@
+﻿@model ProductDetailsModel
+@using Nop.Core.Domain.Seo;
+@using Nop.Core.Infrastructure;
+@using Nop.Web.Models.Catalog;
+@{
+    Layout = "~/Views/Shared/_ColumnsOne.cshtml";
+
+    //title
+    Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
+    //meta
+    Html.AddMetaDescriptionParts(Model.MetaDescription);
+    Html.AddMetaKeywordParts(Model.MetaKeywords);
+    //page class
+    Html.AppendPageCssClassParts("html-product-details-page");
+
+    var seoSettings = EngineContext.Current.Resolve<SeoSettings>();
+
+    //canonical URL
+    if (seoSettings.CanonicalUrlsEnabled)
+    {
+        var productUrl = Url.RouteUrl("Product", new { SeName = Model.SeName }, this.Request.Url.Scheme);
+        Html.AddCanonicalUrlParts(productUrl);
+    }
+
+    //open graph META tags
+    if (seoSettings.OpenGraphMetaTags)
+    {
+        Html.AddHeadCustomParts("<meta property=\"og:type\" content=\"product\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:title\" content=\"" + Html.Encode(Model.Name) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:description\" content=\"" + Html.Encode(Nop.Core.Html.HtmlHelper.StripTags(Model.MetaDescription)) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:image\" content=\"" + Model.DefaultPictureModel.ImageUrl + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:url\" content=\"" + Request.Url.AbsoluteUri + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"og:site_name\" content=\"" + Html.Encode(Model.CurrentStoreName) + "\" />");
+    }
+
+    //Twitter META tags
+    if (seoSettings.TwitterMetaTags)
+    {
+        Html.AddHeadCustomParts("<meta property=\"twitter:card\" content=\"summary\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:site\" content=\"" + Html.Encode(Model.CurrentStoreName) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:title\" content=\"" + Html.Encode(Model.Name) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:description\" content=\"" + Html.Encode(Nop.Core.Html.HtmlHelper.StripTags(Model.MetaDescription)) + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:image\" content=\"" + Model.DefaultPictureModel.ImageUrl + "\" />");
+        Html.AddHeadCustomParts("<meta property=\"twitter:url\" content=\"" + Request.Url.AbsoluteUri + "\" />");
+    }
+}
+<!--product breadcrumb-->
+@section Breadcrumb
+{
+    @Html.Partial("_ProductBreadcrumb", Model.Breadcrumb)
+}
+@Html.Widget("productdetails_after_breadcrumb", Model.Id)
+<div class="page product-details-page">
+   @Html.Raw(Model.FullDescription)
+</div>
+@Html.Partial("_Findvendor")
+
+@section header
+{
+    @if (Model.Id == 51)
+    {
+  <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/font-awesome.min.css" rel="stylesheet"
+      type="text/css" />
+<link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/animate.min.css" rel="stylesheet"
+      type="text/css" />
+<link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/sppagebuilder.css" rel="stylesheet"
+      type="text/css" />
+<link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/sppagecontainer.css" rel="stylesheet"
+      type="text/css" />
+<link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/magnific-popup.css" rel="stylesheet"
+      type="text/css" />
+<link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/63b4b252ff7616b04cacc8b6f562377a.php"
+      rel="stylesheet" type="text/css" />
+<link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/91acceb67ecb8c2a4fadd08f72ce35ef.php"
+      rel="stylesheet" type="text/css" />
+<link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/b773029774dcfbe3874f34ab08e1332a.php"
+      rel="stylesheet" type="text/css" />
+<link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/2e13973836d0008be035197cf1efa54c.php"
+      rel="stylesheet" type="text/css" />
+<link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/beed13dfb875c96f97a3470558f70c45.php"
+      rel="stylesheet" type="text/css" />
+<link href="https://www.suzuki.com.vn/plugins/system/maximenuckmobile/themes/mobiletheme3/maximenuckmobile.css"
+      rel="stylesheet" type="text/css" />
+<link href="https://www.suzuki.com.vn/modules/mod_maximenuck/themes/theme5/css/maximenuck.php?monid=maximenuck154"
+      rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Arial" rel="stylesheet" type="text/css" />
+<link href="https://www.suzuki.com.vn/modules/mod_maximenuck/templatelayers/beez3-position1.css" rel="stylesheet"
+      type="text/css" />
+<link href="https://www.suzuki.com.vn/modules/mod_maximenuck/assets/maximenuresponsiveck.css" rel="stylesheet"
+      type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400|Pacifico:400|Average:400|Open+Sans:400,800|Raleway:400|Bebas:400|Lato:400|Bevan:400|Oxygen:400|Oswald:400|Pt+Sans:400&amp;subset=latin"
+      rel="stylesheet" type="text/css" />
+<script type="application/json"
+        class="joomla-script-options new">
+    {"csrf.token":"f22131b97d47d3aa3aebfe70deaa5857","system.paths":{"root":"","base":""},"joomla.jtext":{"COM_SPPAGEBUILDER_FRONTEND_EDITOR":"Frontend Editor","COM_SPPAGEBUILDER_PREVIEW":"Preview","COM_SPPAGEBUILDER_APPLY":"Apply","COM_SPPAGEBUILDER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER":"Media Manager","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FILES":"Upload Files","COM_SPPAGEBUILDER_MEDIA_MANAGER_CLOSE":"Close Modal","COM_SPPAGEBUILDER_MEDIA_MANAGER_INSERT":"Insert","COM_SPPAGEBUILDER_MEDIA_MANAGER_SEARCH":"Search","COM_SPPAGEBUILDER_MEDIA_MANAGER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE":"Delete","COM_SPPAGEBUILDER_MEDIA_MANAGER_CONFIRM_DELETE":"You are about to permanently delete this item. \\'Cancel\\' to stop, \\'OK\\' to delete.","COM_SPPAGEBUILDER_MEDIA_MANAGER_LOAD_MORE":"Load More","COM_SPPAGEBUILDER_MEDIA_MANAGER_UNSUPPORTED_FORMAT":"File format not supported.","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_MEDIA":"Browse Media","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_FOLDERS":"Browse Folders","COM_SPPAGEBUILDER_MEDIA_MANAGER_CREATE_FOLDER":"New Folder","COM_SPPAGEBUILDER_ADDON_ICON_SELECT":"Select Icon","COM_SPPAGEBUILDER_MEDIA_MANAGER_ENTER_DIRECTORY_NAME":"Please enter the name of the directory which should be created.","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_UPLOADING":"Uploading","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FAILED":"Upload Failed","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_LARGE":"This file is too large to upload.","COM_SPPAGEBUILDER_MEDIA_MANAGER_FILE_NOT_SUPPORTED":"File not supported","COM_SPPAGEBUILDER_ROW_OPTIONS":"Row Options","COM_SPPAGEBUILDER_ADD_NEW_ROW":"Add New Row","COM_SPPAGEBUILDER_DUPLICATE_ROW":"Duplicate row","COM_SPPAGEBUILDER_DISABLE_ROW":"Disable Row","COM_SPPAGEBUILDER_ENABLE_ROW":"Enable Row","COM_SPPAGEBUILDER_COPY_ROW":"Copy Row","COM_SPPAGEBUILDER_ROW_COPIED":"Copied","COM_SPPAGEBUILDER_PASTE_ROW":"Paste Row","COM_SPPAGEBUILDER_DELETE_ROW":"Delete Row","COM_SPPAGEBUILDER_ROW_TOGGLE":"Toggle Row","COM_SPPAGEBUILDER_DELETE_ROW_CONFIRMATION":"Do you really want to delete this row?","COM_SPPAGEBUILDER_ROW_COLUMNS_MANAGEMENT":"Add\/Manage Columns","COM_SPPAGEBUILDER_ROW_COLUMNS_CUSTOM":"Custom","COM_SPPAGEBUILDER_ROW_COLUMNS_GENERATE":"Generate","COM_SPPAGEBUILDER_IMPORT_PAGE":"Import","COM_SPPAGEBUILDER_IMPORT_PAGE_ALT":"Import","COM_SPPAGEBUILDER_EXPORT_PAGE":"Export","COM_SPPAGEBUILDER_PAGE_TEMPLATES":"Page Templates","COM_SPPAGEBUILDER_UNDO":"Undo","COM_SPPAGEBUILDER_REDO":"Redo","COM_SPPAGEBUILDER_SAVE":"Save","COM_SPPAGEBUILDER_ROW_COLUMNS_OPTIONS":"Column Options","COM_SPPAGEBUILDER_DELETE_COLUMN":"Delete Column","COM_SPPAGEBUILDER_ADD_NEW_ADDON":"Add New Addon","COM_SPPAGEBUILDER_ADDON":"Addon","COM_SPPAGEBUILDER_DELETE_ADDON":"Delete Addon","COM_SPPAGEBUILDER_DUPLICATE_ADDON":"Clone Addon","COM_SPPAGEBUILDER_EDIT_ADDON":"Edit Addon","COM_SPPAGEBUILDER_ADDONS_LIST":"Addons List","COM_SPPAGEBUILDER_ALL":"All","COM_SPPAGEBUILDER_MODAL_CLOSE":"Close Modal","COM_SPPAGEBUILDER_DISABLE_COLUMN":"Disable Column","COM_SPPAGEBUILDER_ENABLE_COLUMN":"Enable Column","COM_SPPAGEBUILDER_YES":"Yes","COM_SPPAGEBUILDER_NO":"No","COM_SPPAGEBUILDER_PAGE_TEMPLATES_LIST":"Templates List","COM_SPPAGEBUILDER_PAGE_TEMPLATE_LOAD":"Load","COM_SPPAGEBUILDER_ENABLE_ADDON":"Enable Addon","COM_SPPAGEBUILDER_DISABLE_ADDON":"Disable Addon","COM_SPPAGEBUILDER_ADDON_PARENT_COLUMN":"Parent Column","COM_SPPAGEBUILDER_ADD_NEW_INNER_ROW":"Add Inner Row","COM_SPPAGEBUILDER_MOVE_COLUMN":"Move Column"}}
+</script>
+<script src="media/system/js/core557c.js?5685c1e109510f1aa1514c60372ed09b" type="text/javascript"></script>
+<script src="media/jui/js/jquery.min557c.js?5685c1e109510f1aa1514c60372ed09b" type="text/javascript"></script>
+<script src="media/jui/js/jquery-noconflict557c.js?5685c1e109510f1aa1514c60372ed09b"
+        type="text/javascript"></script>
+<script src="media/jui/js/jquery-migrate.min557c.js?5685c1e109510f1aa1514c60372ed09b"
+        type="text/javascript"></script>
+<script src="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/js/parallax.min.js"
+        type="text/javascript"></script>
+<script src="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/js/sppagebuilder.js"
+        type="text/javascript"></script>
+<script src="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/js/jquery.magnific-popup.min.js"
+        type="text/javascript"></script>
+<script src="https://www.suzuki.com.vn/plugins/system/maximenuckmobile/assets/maximenuckmobile.js"
+        type="text/javascript"></script>
+<script src="media/jui/js/jquery.ui.core.min557c.js?5685c1e109510f1aa1514c60372ed09b"
+        type="text/javascript"></script>
+<script src="https://www.suzuki.com.vn/media/nextend/cache/js/n1545264000/b27ea478486a536449844669c31f0080.php"
+        type="text/javascript"></script>
+<script src="media/widgetkit/uikit2-0bd93abb.js" type="text/javascript"></script>
+<script src="media/widgetkit/wk-scripts-4815056a.js" type="text/javascript"></script>
+<script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('#maximenuck154').MobileMaxiMenu({ usemodules: 0, container: 'menucontainer', showdesc: 0, showlogo: 1, useimages: 0, menuid: 'maximenuck154', showmobilemenutext: 'custom', mobilemenutext: 'Suzuki Việt Nam', mobilebackbuttontext: 'Back', displaytype: 'fade', displayeffect: 'open' });
+        });
+</script>
+<meta content="Super Carry Truck - Việt Nam Suzuki - Ô tô" property="og:title" />
+<meta content="website" property="og:type" />
+<meta content="https://www.suzuki.com.vn/index.php/xe-hoi/super-carry-truck" property="og:url" />
+<link rel="apple-touch-icon-precomposed" href="templates/suzukivietnam/apple_touch_icon.png">
+<link rel="stylesheet" href="templates/suzukivietnam/styles/Suzuki%202/css/bootstrap.css">
+<link rel="stylesheet" href="templates/suzukivietnam/styles/Suzuki%202/css/theme.css">
+<link rel="stylesheet" href="templates/suzukivietnam/styles/Suzuki%202/css/custom.css">
+<script src="templates/suzukivietnam/warp/vendor/uikit/js/uikit.js"></script>
+<script src="templates/suzukivietnam/warp/vendor/uikit/js/components/autocomplete.js"></script>
+<script src="templates/suzukivietnam/warp/vendor/uikit/js/components/search.js"></script>
+<script src="templates/suzukivietnam/warp/vendor/uikit/js/components/tooltip.js"></script>
+<script src="templates/suzukivietnam/warp/js/social.js"></script>
+<script src="templates/suzukivietnam/js/theme.js"></script>
+<script src="templates/suzukivietnam/js/parallax.js"></script>
+        }
+    @if (Model.Id == 50)
+    {
+        <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/font-awesome.min.css" rel="stylesheet"
+              type="text/css" />
+        <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/animate.min.css" rel="stylesheet"
+              type="text/css" />
+        <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/sppagebuilder.css" rel="stylesheet"
+              type="text/css" />
+        <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/sppagecontainer.css" rel="stylesheet"
+              type="text/css" />
+        <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/magnific-popup.css" rel="stylesheet"
+              type="text/css" />
+        <link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/41effcb45eecb3187706f84203b32bd7.php"
+              rel="stylesheet" type="text/css" />
+        <link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/a1d33ae602fced907c671e32cb930085.php"
+              rel="stylesheet" type="text/css" />
+        <link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/379fe1e5240531b4a10b67e1162f2063.php"
+              rel="stylesheet" type="text/css" />
+        <link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/c134bd0d6b6ac471b17149fea349273c.php"
+              rel="stylesheet" type="text/css" />
+        <link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/a3acd62b2a0d84c2c571eed893ab8eff.php"
+              rel="stylesheet" type="text/css" />
+        <link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/1f5651676c2f4772571d619677522b82.php"
+              rel="stylesheet" type="text/css" />
+        <link href="https://www.suzuki.com.vn/plugins/system/maximenuckmobile/themes/mobiletheme3/maximenuckmobile.css"
+              rel="stylesheet" type="text/css" />
+        <link href="https://www.suzuki.com.vn/modules/mod_maximenuck/themes/theme5/css/maximenuck.php?monid=maximenuck154"
+              rel="stylesheet" type="text/css" />
+    <!-- <link href="https://fonts.googleapis.com/css?family=Arial" rel="stylesheet" type="text/css" /> -->
+        <link href="https://www.suzuki.com.vn/modules/mod_maximenuck/templatelayers/beez3-position1.css" rel="stylesheet"
+              type="text/css" />
+        <link href="https://www.suzuki.com.vn/modules/mod_maximenuck/assets/maximenuresponsiveck.css" rel="stylesheet"
+              type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400|Pacifico:400|Average:400|Open+Sans:400,800|Raleway:400|Bebas:400|Lato:400|Bevan:400|Oxygen:400|Oswald:400|Pt+Sans:400&amp;subset=latin"
+              rel="stylesheet" type="text/css" />
+
+        <script type="application/json"
+                class="joomla-script-options new">
+            {"csrf.token":"f22131b97d47d3aa3aebfe70deaa5857","system.paths":{"root":"","base":""},"joomla.jtext":{"COM_SPPAGEBUILDER_FRONTEND_EDITOR":"Frontend Editor","COM_SPPAGEBUILDER_PREVIEW":"Preview","COM_SPPAGEBUILDER_APPLY":"Apply","COM_SPPAGEBUILDER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER":"Media Manager","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FILES":"Upload Files","COM_SPPAGEBUILDER_MEDIA_MANAGER_CLOSE":"Close Modal","COM_SPPAGEBUILDER_MEDIA_MANAGER_INSERT":"Insert","COM_SPPAGEBUILDER_MEDIA_MANAGER_SEARCH":"Search","COM_SPPAGEBUILDER_MEDIA_MANAGER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE":"Delete","COM_SPPAGEBUILDER_MEDIA_MANAGER_CONFIRM_DELETE":"You are about to permanently delete this item. \\'Cancel\\' to stop, \\'OK\\' to delete.","COM_SPPAGEBUILDER_MEDIA_MANAGER_LOAD_MORE":"Load More","COM_SPPAGEBUILDER_MEDIA_MANAGER_UNSUPPORTED_FORMAT":"File format not supported.","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_MEDIA":"Browse Media","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_FOLDERS":"Browse Folders","COM_SPPAGEBUILDER_MEDIA_MANAGER_CREATE_FOLDER":"New Folder","COM_SPPAGEBUILDER_ADDON_ICON_SELECT":"Select Icon","COM_SPPAGEBUILDER_MEDIA_MANAGER_ENTER_DIRECTORY_NAME":"Please enter the name of the directory which should be created.","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_UPLOADING":"Uploading","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FAILED":"Upload Failed","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_LARGE":"This file is too large to upload.","COM_SPPAGEBUILDER_MEDIA_MANAGER_FILE_NOT_SUPPORTED":"File not supported","COM_SPPAGEBUILDER_ROW_OPTIONS":"Row Options","COM_SPPAGEBUILDER_ADD_NEW_ROW":"Add New Row","COM_SPPAGEBUILDER_DUPLICATE_ROW":"Duplicate row","COM_SPPAGEBUILDER_DISABLE_ROW":"Disable Row","COM_SPPAGEBUILDER_ENABLE_ROW":"Enable Row","COM_SPPAGEBUILDER_COPY_ROW":"Copy Row","COM_SPPAGEBUILDER_ROW_COPIED":"Copied","COM_SPPAGEBUILDER_PASTE_ROW":"Paste Row","COM_SPPAGEBUILDER_DELETE_ROW":"Delete Row","COM_SPPAGEBUILDER_ROW_TOGGLE":"Toggle Row","COM_SPPAGEBUILDER_DELETE_ROW_CONFIRMATION":"Do you really want to delete this row?","COM_SPPAGEBUILDER_ROW_COLUMNS_MANAGEMENT":"Add\/Manage Columns","COM_SPPAGEBUILDER_ROW_COLUMNS_CUSTOM":"Custom","COM_SPPAGEBUILDER_ROW_COLUMNS_GENERATE":"Generate","COM_SPPAGEBUILDER_IMPORT_PAGE":"Import","COM_SPPAGEBUILDER_IMPORT_PAGE_ALT":"Import","COM_SPPAGEBUILDER_EXPORT_PAGE":"Export","COM_SPPAGEBUILDER_PAGE_TEMPLATES":"Page Templates","COM_SPPAGEBUILDER_UNDO":"Undo","COM_SPPAGEBUILDER_REDO":"Redo","COM_SPPAGEBUILDER_SAVE":"Save","COM_SPPAGEBUILDER_ROW_COLUMNS_OPTIONS":"Column Options","COM_SPPAGEBUILDER_DELETE_COLUMN":"Delete Column","COM_SPPAGEBUILDER_ADD_NEW_ADDON":"Add New Addon","COM_SPPAGEBUILDER_ADDON":"Addon","COM_SPPAGEBUILDER_DELETE_ADDON":"Delete Addon","COM_SPPAGEBUILDER_DUPLICATE_ADDON":"Clone Addon","COM_SPPAGEBUILDER_EDIT_ADDON":"Edit Addon","COM_SPPAGEBUILDER_ADDONS_LIST":"Addons List","COM_SPPAGEBUILDER_ALL":"All","COM_SPPAGEBUILDER_MODAL_CLOSE":"Close Modal","COM_SPPAGEBUILDER_DISABLE_COLUMN":"Disable Column","COM_SPPAGEBUILDER_ENABLE_COLUMN":"Enable Column","COM_SPPAGEBUILDER_YES":"Yes","COM_SPPAGEBUILDER_NO":"No","COM_SPPAGEBUILDER_PAGE_TEMPLATES_LIST":"Templates List","COM_SPPAGEBUILDER_PAGE_TEMPLATE_LOAD":"Load","COM_SPPAGEBUILDER_ENABLE_ADDON":"Enable Addon","COM_SPPAGEBUILDER_DISABLE_ADDON":"Disable Addon","COM_SPPAGEBUILDER_ADDON_PARENT_COLUMN":"Parent Column","COM_SPPAGEBUILDER_ADD_NEW_INNER_ROW":"Add Inner Row","COM_SPPAGEBUILDER_MOVE_COLUMN":"Move Column"}}
+        </script>
+        <script src="media/system/js/core557c.js?5685c1e109510f1aa1514c60372ed09b" type="text/javascript"></script>
+        <script src="media/jui/js/jquery.min557c.js?5685c1e109510f1aa1514c60372ed09b" type="text/javascript"></script>
+        <script src="media/jui/js/jquery-noconflict557c.js?5685c1e109510f1aa1514c60372ed09b"
+        type="text/javascript"></script>
+        <script src="media/jui/js/jquery-migrate.min557c.js?5685c1e109510f1aa1514c60372ed09b"
+        type="text/javascript"></script>
+        <script src="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/js/parallax.min.js"
+                type="text/javascript"></script>
+        <script src="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/js/sppagebuilder.js"
+                type="text/javascript"></script>
+        <script src="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/js/jquery.magnific-popup.min.js"
+                type="text/javascript"></script>
+        <script src="https://www.suzuki.com.vn/plugins/system/maximenuckmobile/assets/maximenuckmobile.js"
+                type="text/javascript"></script>
+        <script src=" media/jui/js/jquery.ui.core.min557c.js?5685c1e109510f1aa1514c60372ed09b"
+        type="text/javascript"></script>
+        <script src="https://www.suzuki.com.vn/media/nextend/cache/js/n1545264000/b27ea478486a536449844669c31f0080.php"
+                type="text/javascript"></script>
+        <script src=" media/widgetkit/uikit2-0bd93abb.js" type="text/javascript"></script>
+        <script src=" media/widgetkit/wk-scripts-4815056a.js" type="text/javascript"></script>
+        <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $('#maximenuck154').MobileMaxiMenu({ usemodules: 0, container: 'menucontainer', showdesc: 0, showlogo: 1, useimages: 0, menuid: 'maximenuck154', showmobilemenutext: 'custom', mobilemenutext: 'Suzuki Việt Nam', mobilebackbuttontext: 'Back', displaytype: 'fade', displayeffect: 'open' });
+        });
+        </script>
+      
+
+        <link rel="apple-touch-icon-precomposed" href=" templates/suzukivietnam/apple_touch_icon.png">
+        <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/bootstrap.css">
+        <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/theme.css">
+        <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/custom.css">
+        <script src=" templates/suzukivietnam/warp/vendor/uikit/js/uikit.js"></script>
+        <script src=" templates/suzukivietnam/warp/vendor/uikit/js/components/autocomplete.js"></script>
+        <script src=" templates/suzukivietnam/warp/vendor/uikit/js/components/search.js"></script>
+        <script src=" templates/suzukivietnam/warp/vendor/uikit/js/components/tooltip.js"></script>
+        <script src=" templates/suzukivietnam/warp/js/social.js"></script>
+        <script src=" templates/suzukivietnam/js/theme.js"></script>
+        <script src=" templates/suzukivietnam/js/parallax.js"></script>
+    }
+    @if (Model.Id == 52)
+    {
+        <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/font-awesome.min.css"
+              rel="stylesheet" type="text/css" />
+            <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/animate.min.css" rel="stylesheet"
+                  type="text/css" />
+            <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/sppagebuilder.css"
+                  rel="stylesheet" type="text/css" />
+            <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/sppagecontainer.css"
+                  rel="stylesheet" type="text/css" />
+            <link href="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/css/magnific-popup.css"
+                  rel="stylesheet" type="text/css" />
+            <link href="https://www.suzuki.com.vn/media/nextend/cache/css/static/a5b2cb37555ae7d3b087be312023ebae.php"
+                  rel="stylesheet" type="text/css" />
+            <link href="https://www.suzuki.com.vn/plugins/system/maximenuckmobile/themes/mobiletheme3/maximenuckmobile.css"
+                  rel="stylesheet" type="text/css" />
+            <link href="https://www.suzuki.com.vn/modules/mod_maximenuck/themes/theme5/css/maximenuck.php?monid=maximenuck154"
+                  rel="stylesheet" type="text/css" />
+            <link href="https://fonts.googleapis.com/css?family=Arial" rel="stylesheet" type="text/css" />
+            <link href="https://www.suzuki.com.vn/modules/mod_maximenuck/templatelayers/beez3-position1.css"
+                  rel="stylesheet" type="text/css" />
+            <link href="https://www.suzuki.com.vn/modules/mod_maximenuck/assets/maximenuresponsiveck.css" rel="stylesheet"
+                  type="text/css" />
+            <link href="https://fonts.googleapis.com/css?family=Montserrat:400|Pacifico:400|Average:400|Open+Sans:400|Raleway:400|Bebas:400&amp;subset=latin"
+                  rel="stylesheet" type="text/css" />
+
+            <script type="application/json"
+                    class="joomla-script-options new">
+                {"csrf.token":"f22131b97d47d3aa3aebfe70deaa5857","system.paths":{"root":"","base":""},"joomla.jtext":{"COM_SPPAGEBUILDER_FRONTEND_EDITOR":"Frontend Editor","COM_SPPAGEBUILDER_PREVIEW":"Preview","COM_SPPAGEBUILDER_APPLY":"Apply","COM_SPPAGEBUILDER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER":"Media Manager","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FILES":"Upload Files","COM_SPPAGEBUILDER_MEDIA_MANAGER_CLOSE":"Close Modal","COM_SPPAGEBUILDER_MEDIA_MANAGER_INSERT":"Insert","COM_SPPAGEBUILDER_MEDIA_MANAGER_SEARCH":"Search","COM_SPPAGEBUILDER_MEDIA_MANAGER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE":"Delete","COM_SPPAGEBUILDER_MEDIA_MANAGER_CONFIRM_DELETE":"You are about to permanently delete this item. \\'Cancel\\' to stop, \\'OK\\' to delete.","COM_SPPAGEBUILDER_MEDIA_MANAGER_LOAD_MORE":"Load More","COM_SPPAGEBUILDER_MEDIA_MANAGER_UNSUPPORTED_FORMAT":"File format not supported.","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_MEDIA":"Browse Media","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_FOLDERS":"Browse Folders","COM_SPPAGEBUILDER_MEDIA_MANAGER_CREATE_FOLDER":"New Folder","COM_SPPAGEBUILDER_ADDON_ICON_SELECT":"Select Icon","COM_SPPAGEBUILDER_MEDIA_MANAGER_ENTER_DIRECTORY_NAME":"Please enter the name of the directory which should be created.","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_UPLOADING":"Uploading","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FAILED":"Upload Failed","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_LARGE":"This file is too large to upload.","COM_SPPAGEBUILDER_MEDIA_MANAGER_FILE_NOT_SUPPORTED":"File not supported","COM_SPPAGEBUILDER_ROW_OPTIONS":"Row Options","COM_SPPAGEBUILDER_ADD_NEW_ROW":"Add New Row","COM_SPPAGEBUILDER_DUPLICATE_ROW":"Duplicate row","COM_SPPAGEBUILDER_DISABLE_ROW":"Disable Row","COM_SPPAGEBUILDER_ENABLE_ROW":"Enable Row","COM_SPPAGEBUILDER_COPY_ROW":"Copy Row","COM_SPPAGEBUILDER_ROW_COPIED":"Copied","COM_SPPAGEBUILDER_PASTE_ROW":"Paste Row","COM_SPPAGEBUILDER_DELETE_ROW":"Delete Row","COM_SPPAGEBUILDER_ROW_TOGGLE":"Toggle Row","COM_SPPAGEBUILDER_DELETE_ROW_CONFIRMATION":"Do you really want to delete this row?","COM_SPPAGEBUILDER_ROW_COLUMNS_MANAGEMENT":"Add\/Manage Columns","COM_SPPAGEBUILDER_ROW_COLUMNS_CUSTOM":"Custom","COM_SPPAGEBUILDER_ROW_COLUMNS_GENERATE":"Generate","COM_SPPAGEBUILDER_IMPORT_PAGE":"Import","COM_SPPAGEBUILDER_IMPORT_PAGE_ALT":"Import","COM_SPPAGEBUILDER_EXPORT_PAGE":"Export","COM_SPPAGEBUILDER_PAGE_TEMPLATES":"Page Templates","COM_SPPAGEBUILDER_UNDO":"Undo","COM_SPPAGEBUILDER_REDO":"Redo","COM_SPPAGEBUILDER_SAVE":"Save","COM_SPPAGEBUILDER_ROW_COLUMNS_OPTIONS":"Column Options","COM_SPPAGEBUILDER_DELETE_COLUMN":"Delete Column","COM_SPPAGEBUILDER_ADD_NEW_ADDON":"Add New Addon","COM_SPPAGEBUILDER_ADDON":"Addon","COM_SPPAGEBUILDER_DELETE_ADDON":"Delete Addon","COM_SPPAGEBUILDER_DUPLICATE_ADDON":"Clone Addon","COM_SPPAGEBUILDER_EDIT_ADDON":"Edit Addon","COM_SPPAGEBUILDER_ADDONS_LIST":"Addons List","COM_SPPAGEBUILDER_ALL":"All","COM_SPPAGEBUILDER_MODAL_CLOSE":"Close Modal","COM_SPPAGEBUILDER_DISABLE_COLUMN":"Disable Column","COM_SPPAGEBUILDER_ENABLE_COLUMN":"Enable Column","COM_SPPAGEBUILDER_YES":"Yes","COM_SPPAGEBUILDER_NO":"No","COM_SPPAGEBUILDER_PAGE_TEMPLATES_LIST":"Templates List","COM_SPPAGEBUILDER_PAGE_TEMPLATE_LOAD":"Load","COM_SPPAGEBUILDER_ENABLE_ADDON":"Enable Addon","COM_SPPAGEBUILDER_DISABLE_ADDON":"Disable Addon","COM_SPPAGEBUILDER_ADDON_PARENT_COLUMN":"Parent Column","COM_SPPAGEBUILDER_ADD_NEW_INNER_ROW":"Add Inner Row","COM_SPPAGEBUILDER_MOVE_COLUMN":"Move Column"}}
+            </script>
+            <script src=" media/system/js/core557c.js?5685c1e109510f1aa1514c60372ed09b"
+            type="text/javascript"></script>
+            <script src=" media/jui/js/jquery.min557c.js?5685c1e109510f1aa1514c60372ed09b"
+            type="text/javascript"></script>
+            <script src=" media/jui/js/jquery-noconflict557c.js?5685c1e109510f1aa1514c60372ed09b"
+            type="text/javascript"></script>
+            <script src=" media/jui/js/jquery-migrate.min557c.js?5685c1e109510f1aa1514c60372ed09b"
+            type="text/javascript"></script>
+            <script src="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/js/parallax.min.js"
+                    type="text/javascript"></script>
+            <script src="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/js/sppagebuilder.js"
+                    type="text/javascript"></script>
+            <script src="https://www.suzuki.com.vn/components/com_sppagebuilder/assets/js/jquery.magnific-popup.min.js"
+                    type="text/javascript"></script>
+            <script src="https://www.suzuki.com.vn/plugins/system/maximenuckmobile/assets/maximenuckmobile.js"
+                    type="text/javascript"></script>
+            <script src=" media/jui/js/jquery.ui.core.min557c.js?5685c1e109510f1aa1514c60372ed09b"
+            type="text/javascript"></script>
+            <script src="https://www.suzuki.com.vn/media/nextend/cache/js/n1545264000/1c14f214cace9eda9a86aa3dc5443424.php"
+                    type="text/javascript"></script>
+            <script src=" media/widgetkit/uikit2-0bd93abb.js" type="text/javascript"></script>
+            <script src=" media/widgetkit/wk-scripts-4815056a.js" type="text/javascript"></script>
+           
+        
+
+            <link rel="apple-touch-icon-precomposed" href=" templates/suzukivietnam/apple_touch_icon.png">
+            <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/bootstrap.css">
+            <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/theme.css">
+            <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/custom.css">
+            <script src=" templates/suzukivietnam/warp/vendor/uikit/js/uikit.js"></script>
+            <script src=" templates/suzukivietnam/warp/vendor/uikit/js/components/autocomplete.js"></script>
+            <script src=" templates/suzukivietnam/warp/vendor/uikit/js/components/search.js"></script>
+            <script src=" templates/suzukivietnam/warp/vendor/uikit/js/components/tooltip.js"></script>
+            <script src=" templates/suzukivietnam/warp/js/social.js"></script>
+            <script src=" templates/suzukivietnam/js/theme.js"></script>
+            <script src=" templates/suzukivietnam/js/parallax.js"></script>
+        <!-- Hotjar Tracking Code for https://suzuki.com.vn/ -->
+
+
+
+    }
+    }

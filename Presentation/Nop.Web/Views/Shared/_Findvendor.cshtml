@@ -1,0 +1,31 @@
+﻿@{
+    Html.AddScriptParts(ResourceLocation.Foot, "~/Scripts/jquery-ui.js", true);
+    Html.AddScriptParts(ResourceLocation.Foot, "~/Scripts/baseController.js", true);
+}
+<section>
+    <div class="find-local parallax">
+        <div class="container">
+            <form action="/tim-kiem-dai-ly" method="get">
+                <div class="icon-locac row">
+                    <div class="col-md-5"></div>
+                    <div class="col-md-2 text-center">
+                        <a href=""><i class="fas fa-map-marker-alt"></i></a>
+                    </div>
+                    <div class="col-md-5"></div>
+                </div>
+                <div class="find-local-text text-center">
+                    <h1>tìm đại lý</h1>
+                    <p>Nhập mã bưu điện hoặc thị trấn đầy đủ của bạn để tìm đại lý gần nhất đối với bạn</p>
+                </div>
+                <div class="form-search text-center autocomplete">
+                    <i class="fas fa-compass"></i>
+                    <input type="text" class="input-searchagency" id="province" name="province" placeholder="Nhập mã hoặc thị trấn">
+                </div>
+                <div class="btn-btn-timkiem text-center d-flex justify-content-center">
+                    <input type="submit" value="TÌM KIẾM">
+                </div>
+
+            </form>
+        </div>
+    </div>
+</section>
