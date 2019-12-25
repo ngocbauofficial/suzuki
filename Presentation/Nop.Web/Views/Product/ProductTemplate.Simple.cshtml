@@ -4,7 +4,6 @@
 @using Nop.Web.Models.Catalog;
 @{
     Layout = "~/Views/Shared/_ColumnsOne.cshtml";
-
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/jquery.magnific-popup.min.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/swiper.min.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/popper.js", true);
@@ -21,16 +20,13 @@
     Html.AddMetaKeywordParts(Model.MetaKeywords);
     //page class
     Html.AppendPageCssClassParts("html-product-details-page");
-
     var seoSettings = EngineContext.Current.Resolve<SeoSettings>();
-
     //canonical URL
     if (seoSettings.CanonicalUrlsEnabled)
     {
         var productUrl = Url.RouteUrl("Product", new { SeName = Model.SeName }, this.Request.Url.Scheme);
         Html.AddCanonicalUrlParts(productUrl);
     }
-
     //open graph META tags
     if (seoSettings.OpenGraphMetaTags)
     {
@@ -41,7 +37,6 @@
         Html.AddHeadCustomParts("<meta property=\"og:url\" content=\"" + Request.Url.AbsoluteUri + "\" />");
         Html.AddHeadCustomParts("<meta property=\"og:site_name\" content=\"" + Html.Encode(Model.CurrentStoreName) + "\" />");
     }
-
     //Twitter META tags
     if (seoSettings.TwitterMetaTags)
     {
@@ -54,7 +49,6 @@
     }
 }
 @*
-
         <!--product breadcrumb-->
         @section Breadcrumb
         {
@@ -121,9 +115,7 @@
                                     var dataDictPrice = new ViewDataDictionary();
                                     dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
                                     @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
-
                                     @Html.Partial("_ProductTierPrices", Model.TierPrices)
-
                                     var dataDictAddToCart = new ViewDataDictionary();
                                     dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
                                     @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)
@@ -162,16 +154,12 @@
                 @Html.Widget("productdetails_bottom", Model.Id)
             </div>
         </div>
-  
 *@
-
 <div class="slide-background">
     <div class="video container">
         <video src="@Model.Video" playsinline loop muted autoplay width="100%" height="50%"> </video>
     </div>
-
 </div>
-
 <section>
     <div class="navi">
         <div class="container">
@@ -251,8 +239,6 @@
         </div>
     </div>
 </section>
-
-
  <section id="1">
                 <!-- <div class="container "> -->
                 <div class="container">
@@ -264,8 +250,6 @@
                 </div>
                 <!-- </div> -->
             </section>
-
-
 <section id="2">
     <div class="container">
         <div class="mode">
@@ -283,15 +267,11 @@
         </div>
         @Html.Partial("_DownloadSample", Model)
     </div>
-  
 </section>
-
-
 <section id="3">
     <div class="container">
         <div class="exterior ">
             <h1 class="text-uppercase text-center ">ngoại thất</h1>
-           
         </div>
         <div class="row galary">
             <div class="col-md-6 mt-2 pr-1 mb-1">
@@ -340,15 +320,11 @@
         <div class="clear-float"></div>
     </div>
 </section>
-
-
-
     <section id="4">
         <div class="container">
             <div class="furniture">
                 <h1 class="text-uppercase text-center">nội thất</h1>       
             </div>
-           
             <div class="test mt-3" style="background-image: url(@Model.NoiThat1.FullSizeImageUrl);">
                 <input type="checkbox" class="input" id="input1" name="inputs">
                 <input type="checkbox" class="input" id="input2" name="inputs">
@@ -455,23 +431,12 @@
             <div class="clear-float"></div>
         </div>
     </section>
-
-
-
-
-
-
-
-
     @foreach (var item in Model.ProductSpecifications.Where(x => x.SpecificationAttributeId == 6))
     {
         <section class="container" id="5">
-         
                 <div class="specifications">
                     <h1 class="text-uppercase text-center"> @Html.Raw(item.SpecificationAttributeName) </h1>
-                    
                 </div>
-          
             <div>
                 @Html.Raw(item.ValueRaw)
             </div>
@@ -484,15 +449,11 @@
             @Html.Partial("_DownloadSample", Model)
         </section>
     }
-
-
 <!-- end -->
-
 <section id="6">
     <div class="container phu-kien">
         <div class="exterior ">
             <h1 class="text-uppercase text-center ">Phụ Kiện</h1>
-
         </div>
         <div class="fix-final mt-4 m-0 row p-0">
             <div class="col-md-4 test-flex fix-res pl-0 pr-0">
@@ -566,24 +527,15 @@
         </div>
     </div>
 </section>
-
 <section id="7" class="bang-gia-section">
     <div class="container">
         <div class="price-list ">
             <h1 class="text-uppercase text-center">Bảng giá xe</h1>
-          
         </div>
      @{Html.RenderAction("_GetTopic", "Topic", new { topicId = 15 });}
     </div>
 </section>
-
-
 @Html.Action("RelatedProducts", "Product", new { productId = Model.Id })
-
-
-
-
-@Html.Partial("_Findvendor")
 @section scripts{
 <script>
             $('.new-sp').owlCarousel({
@@ -608,12 +560,10 @@
             $(document).ready(function () {
                 // Add smooth scrolling to all links
                 $("a").on('click', function (event) {
-
                     // Make sure this.hash has a value before overriding default behavior
                     if (this.hash !== "") {
                         // Prevent default anchor click behavior
                         event.preventDefault();
-
                         // Store hash
                         var hash = this.hash;
                         // Using jQuery's animate() method to add smooth page scroll
@@ -621,7 +571,6 @@
                         $('html, body').animate({
                             scrollTop: $(hash).offset().top
                         }, 500, function () {
-
                             // Add hash (#) to URL when done scrolling (default click behavior)
                             var noHashURL = window.location.href.replace(/#.*$/, '');
                             window.history.replaceState('', document.title, noHashURL)
@@ -629,7 +578,6 @@
                     } // End if
                 });
             });
-
 </script>
 <script>
             $(document).ready(function () {
@@ -659,12 +607,10 @@
                     setIFrameSize();
                 });
             });
-
             function setIFrameSize() {
                 var ogWidth = 700;
                 var ogHeight = 600;
                 var ogRatio = ogWidth / ogHeight;
-
                 var windowWidth = $(window).width();
                 if (windowWidth < 480) {
                     var parentDivWidth = $(".iframe-class").parent().width();

@@ -22,24 +22,19 @@
         @RenderSection("Breadcrumb")
     }
 }
-
 @Html.Widget("main_column_before")
-
-
 <section class="newpage pt-3">
     <div class="container">
         <!-- <h1 class="text-center text-uppercase pt-3 pb-3">tin tức và sự kiện</h1> -->
         <div class="row m-0 p-0">
-
             <div class="col-md-3 vitri">
                 <div class="line-top"></div>
-                <ul class="slidebar-menu menu-block pl-0">
-                  
-                </ul>
+                <ul class="slidebar-menu menu-block pl-0"></ul>
                 <div class="slidebar-cateqery ">
                     <ul class="pl-0">
                         <li>
-                            <a href="#" class="hotline">Phòng dịch vụ<span>@phoneDV</span>
+                            <a href="#" class="hotline">
+                                Phòng dịch vụ<span>@phoneDV</span>
                             </a>
                         </li>
                         <li>
@@ -53,13 +48,14 @@
             </div>
             <div class="col-md-9 full-view ">
                 @RenderBody()
-               
             </div>
         </div>
     </div>
 </section>
-@Html.Partial("_Findvendor")
 @Html.Widget("main_column_after")
 @section scripts {
     @RenderSection("scripts", false)
+}
+@section Css {
+    @RenderSection("Css", false)
 }

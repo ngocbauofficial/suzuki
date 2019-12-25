@@ -66,6 +66,16 @@ namespace Nop.Admin.Models.Topics
         [AllowHtml]
         public string Body { get; set; }
 
+
+        [NopResourceDisplayName("Admin.ContentManagement.Topics.Fields.Css")]
+        [AllowHtml]
+        public string Css { get; set; }
+        [NopResourceDisplayName("Admin.ContentManagement.Topics.Fields.Script")]
+        [AllowHtml]
+
+        public string Script { get; set; }
+
+
         [NopResourceDisplayName("Admin.ContentManagement.Topics.Fields.Published")]
         public bool Published { get; set; }
 

@@ -1149,6 +1149,7 @@
     <Content Include="Views\Product\_Version.cshtml" />
     <Content Include="Views\Catalog\Brochure.cshtml" />
     <Content Include="Views\News\RelatedNews.cshtml" />
+    <Content Include="Views\Topic\_GetTopicBySystem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\" />

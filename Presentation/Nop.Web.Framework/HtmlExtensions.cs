@@ -20,6 +20,7 @@ namespace Nop.Web.Framework
 {
     public static class HtmlExtensions
     {
+
         #region Admin area extensions
 
         public static HelperResult LocalizedEditor<T, TLocalizedModelLocal>(this HtmlHelper<T> helper,

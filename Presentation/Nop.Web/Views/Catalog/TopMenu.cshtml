@@ -3,8 +3,6 @@
 @{
     var rootCategories = Model.Categories.Where(x => x.IncludeInTopMenu).ToList();
 }
-
-
 <nav id="menu">
     <ul>
         @foreach (var category in rootCategories)
@@ -12,83 +10,70 @@
             <li>
                 <span>@category.Name</span>
                 <ul>
-
                     @{ Html.RenderAction("CategoryHomePageProducts", new { categoryid = category.Id }); }
-
-
                 </ul>
             </li>
-                        }
+        }
         <li>
             <span>Mua xe</span>
             <ul>
-                <li><a href="/bang-gia-xe">bảng giá xe</a></li>
-                <li><a href="/du-toan-chi-phi">dự toán chi phí</a></li>
-                <li><a href="/dang-ky-lai-thu">đăng ký lái thử</a></li>
-             
+                <li><a href="/bang-gia-xe"><i class="fas fa-square icon-children-menu"></i> bảng giá xe</a></li>
+                <li><a href="@Url.RouteUrl("DuToanChiPhi")"><i class="fas fa-square icon-children-menu"></i> dự toán chi phí</a></li>
+                <li><a href="@Url.RouteUrl("DangKyLaiThu")"><i class="fas fa-square icon-children-menu"></i> đăng ký lái thử</a></li>
             </ul>
         </li>
         <li>
             <span>Dịch vụ</span>
             <ul>
-                <li><a href="/phutung">phụ tùng</a></li>
-                <li><a href="/baohanh">bảo hành</a></li>
-                <li><a href="/hoidap">hỏi đáp</a></li>
+                <li><a href="/phu-tung"><i class="fas fa-square icon-children-menu"></i>phụ tùng</a></li>
+                <li><a href="/bao-hanh"><i class="fas fa-square icon-children-menu"></i>bảo hành</a></li>
+                <li><a href="/hoi-dap"><i class="fas fa-square icon-children-menu"></i>hỏi đáp</a></li>
             </ul>
         </li>
         <li>
             <span>Công nghệ</span>
             <ul>
-                <li><a href="/kienthucsuzuki">kiến thức suzuki</a></li>
-            </ul>
-        </li>
-		 <li>
-            <span>Lịch sử suzuki</span>
-            <ul>
-                <li><a href="/lich-su-suzuki">Lịch sử suzuki</a></li>
-				   <li><a href="/cau-chuyen-suzuki">Câu Chuyện Suzuki</a></li>
+                <li><a href="/kien-thuc-suzuki"><i class="fas fa-square icon-children-menu"></i>kiến thức suzuki</a></li>
             </ul>
         </li>
         <li>
-            <a href="/tin-tuc">Tin Tức</a>
+            <span>Lịch sử suzuki</span>
+            <ul>
+                <li><a href="/lich-su-suzuki"><i class="fas fa-square icon-children-menu"></i>Lịch sử suzuki</a></li>
+                <li><a href="/cau-chuyen-suzuki"><i class="fas fa-square icon-children-menu"></i>Câu Chuyện Suzuki</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="@Url.RouteUrl("Blog")">Khuyến Mãi</a>
+        </li>
+        <li>
+            <a href="@Url.RouteUrl("NewsArchive")">Tin Tức</a>
         </li>
         <li>
             <a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a>
         </li>
     </ul>
-    
-
-   
 </nav>
-
 <ul>
-@foreach (var category in rootCategories)
-{
-
-    <li class="aaa">
-        <a href="#">sản phẩm <i class="fas fa-angle-down"></i></a>
-        <div class="menu-lv2">
-            <ul class="lv2">
-             
-                   @{ Html.RenderAction("CategoryHomePageProducts", new { categoryid = category.Id }); }
-             
-
-              
-               
-            </ul>
-        </div>
-    </li>
-}
+    @foreach (var category in rootCategories)
+    {
+        <li class="aaa">
+            <a href="#">sản phẩm <i class="fas fa-angle-down"></i></a>
+            <div class="menu-lv2">
+                <ul class="lv2">
+                    @{ Html.RenderAction("CategoryHomePageProducts", new { categoryid = category.Id }); }
+                </ul>
+            </div>
+        </li>
+    }
     <li class="menu-2 aaa">
         <a href="#">mua xe <i class="fas fa-angle-down"></i></a>
         <ul class="sub-lv2">
             <li><a href="/bang-gia-xe">bảng giá xe</a></li>
-            <li><a href="/du-toan-chi-phi">dự toán chi phí</a></li>
-            <li><a href="/dang-ky-lai-thu">đăng ký lái thử</a></li>
-       
+            <li><a href="@Url.RouteUrl("DuToanChiPhi")">dự toán chi phí</a></li>
+            <li><a href="@Url.RouteUrl("DangKyLaiThu")">đăng ký lái thử</a></li>
         </ul>
     </li>
-
     <li class="menu-2 aaa">
         <a href="#">dịch vụ <i class="fas fa-angle-down"></i></a>
         <ul class="sub-lv2">
@@ -104,20 +89,17 @@
         </ul>
     </li>
     <li class="menu-2 aaa">
-	<a href="/lich-su-suzuki">lịch sử suzuki <i class="fas fa-angle-down"></i></a>
-	 <ul class="sub-lv2">
+        <a href="/lich-su-suzuki">lịch sử suzuki <i class="fas fa-angle-down"></i></a>
+        <ul class="sub-lv2">
             <li><a href="/cau-chuyen-suzuki">câu chuyện suzuki</a></li>
         </ul>
-	</li>
-	
-    <li class="menu-2 aaa">
-    <li><a href="/tin-tuc">tin tức</a></li>
- 
-   
+    </li>
+
+    <li><a href="@Url.RouteUrl("Blog")">Khuyến Mãi</a></li>
+    <li><a href="@Url.RouteUrl("NewsArchive")">tin tức</a></li>
     <li>
         <a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a>
     </li>
-
 </ul>
 <div class="main-header">
     <div class="btn-menu">

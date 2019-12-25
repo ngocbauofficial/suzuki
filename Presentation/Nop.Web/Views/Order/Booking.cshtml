@@ -4,14 +4,12 @@
 @using Nop.Core.Domain.Catalog;
 @{
     Layout = "~/Views/Shared/_ColumnsOne.cshtml";
-
     //title
     Html.AddTitleParts("Đăng Ký Lái Thử");
     //page class
     Html.AppendPageCssClassParts("html-checkout-page");
     Html.AppendPageCssClassParts("html-shipping-address-page");
 }
-
 <div class="bbb">
                 <img src="/Content/Images/uploaded/panner/panner-dangkylaithu.jpg" alt="" class="img-fluid">
             </div>
@@ -40,7 +38,6 @@
                  <img alt="" src="@ViewBag.Images" />
              </div>
          </div>
-
          <div class="line-bk"></div>
         <div class="row d-flex justify-content-center">
             <div class="col-md-6 checked-form">
@@ -56,14 +53,11 @@
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.Gender)
-
                     <select id="Gender" name="Gender" class="main-check-car form-control">
                         <option value="false">Nam</option>
                         <option value="true">Nữ</option>
-                      
                         </select>
 </div>
-              
                 <div class="form-group">
                     @Html.LabelFor(model => model.Deed)
                     <select id="Deed" name="Deed" class="main-check-car form-control">
@@ -77,18 +71,14 @@
                     <div class="form-group">
                         <div class="row">
                             <div style="width:20%">
-
                             </div>
                             <div  style="width:80%" id="Status"> </div>
                         </div>
-                      
                         @Html.LabelFor(model => model.State)
-                     
                         @Html.DropDownList("State",null, "Chọn", htmlAttributes: new { @class = "main-check-car form-control" })
                         @Html.ValidationMessageFor(model => model.State)
                     </div>
                     <div class="form-group">
-                     
                         @Html.LabelFor(model => model.VendorId)
                         @Html.DropDownList("VendorId", null,"Chọn", htmlAttributes: new { @class = "main-check-car form-control" })
                         @Html.ValidationMessageFor(model => model.VendorId)
@@ -97,12 +87,9 @@
                         @Html.LabelFor(model => model.Note)
                         @Html.TextAreaFor(m => m.Note,new { @class= "form-control",@rows="4" })
                     </div>
-                 
                 </div>
             <input type="submit" value="Gửi đăng ký" class="submit-lv2">
             </div>
-
-      
      }
     </div>
     <div class="container">
@@ -120,24 +107,15 @@
                         <span><i class="fas vendor-icon fa-phone"></i>Phone: @ViewBag.PhoneVendor</span>
                         <span><i class="fas vendor-icon fa-envelope"></i>Email: @ViewBag.EmailVendor</span>
                     </div>
-
                 </div>
                 <div class="col-md-6">
-
                     @Html.Raw(ViewBag.Google)
-
                 </div>
             </div>
-
             }
-           
-         
-
         </div>
     </div>
- 
 </section>
-
 <script>
     $(document).ready(function () {
         $("#State").change(function () {
@@ -148,7 +126,6 @@
                     dataType: "html",
                     data: { "StateId": selectedItem },
                     success: function (data) {
-
                         if (data == 0) {
                             $("#Status").html('<font color="Red">Rất tiếc tỉnh thành bạn của đang chọn không có đại lý suzuki vui lòng chọn tỉnh thành gần nhất</font>');
                             $("#VendorId").html(data);
@@ -156,20 +133,16 @@
                             $("#State").css("border-color", "Red");
                         }
                         else {
-
                             $("#VendorId").html(data);
                             $("#Status").html('');
                             $("#google-vendor").html("");
                             $("#State").css("border-color", "#ced4da");
                         }
-
-
                     },
             });
         });
     });
 </script>
-
 <script>
     $(document).ready(function () {
         $("#ProductId").change(function () {
@@ -186,7 +159,6 @@
         });
     });
 </script>
-
 <script>
     $(document).ready(function () {
         $("#VendorId").change(function () {

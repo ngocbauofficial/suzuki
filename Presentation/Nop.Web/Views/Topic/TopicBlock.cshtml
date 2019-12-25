@@ -10,7 +10,6 @@
                     password: $('#password-@Model.Id').val()
                 };
                 addAntiForgeryToken(postData);
-
                 $.ajax({
                     cache: false,
                     type: 'POST',
@@ -35,7 +34,6 @@
                 return false;
             });
         });
-
         $(document).ready(function() {
             $('#ph-topic-@Model.Id').hide();
             $('#ph-password-@Model.Id #password-@Model.Id').select().focus();

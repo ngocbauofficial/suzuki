@@ -20,19 +20,13 @@
         <div class="news-date">
             @Model.CreatedOn.ToString("D")
         </div>
-    
             @Html.Raw(Model.Full)
-      
-      
     </div>
     <div class="tintuc-lienquan">
         @Html.Action("RelatedNews", "News")
     </div>
 </div>
-
 @section scripts{
-
-
     <script>
             $('.new-sp').owlCarousel({
                 loop: false,

@@ -69,6 +69,16 @@ namespace Nop.Core.Domain.Topics
         public string Body { get; set; }
 
         /// <summary>
+        /// Gets or sets the Css
+        /// </summary>
+        public string Css { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Script
+        /// </summary>
+        public string Script { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the entity is published
         /// </summary>
         public bool Published { get; set; }

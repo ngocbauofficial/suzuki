@@ -21,7 +21,6 @@
     {
         Layout = "~/Views/Shared/_ColumnsOne.cshtml";
     }
-
     if (!Model.IsPasswordProtected)
     {
         //title
@@ -30,14 +29,12 @@
         Html.AddMetaDescriptionParts(Model.MetaDescription);
         Html.AddMetaKeywordParts(Model.MetaKeywords);
     }
-
     var canonicalUrlsEnabled = EngineContext.Current.Resolve<SeoSettings>().CanonicalUrlsEnabled;
     if (canonicalUrlsEnabled)
     {
         var topicUrl = Url.RouteUrl("Topic", new { SeName = Model.SeName }, this.Request.Url.Scheme);
         Html.AddCanonicalUrlParts(topicUrl);
     }
-
     //page class
     Html.AppendPageCssClassParts("html-topic-page");
 }
@@ -51,8 +48,6 @@
                     password: $('#password').val()
                 };
                 addAntiForgeryToken(postData);
-
-
                 $.ajax({
                     cache: false,
                     type: 'POST',
@@ -78,7 +73,6 @@
                 return false;
             });
         });
-
         $(document).ready(function () {
             $('#ph-topic').hide();
             $('#ph-password #password').select().focus();
@@ -100,17 +94,11 @@
         }
     </div>
 }
-
-
         @Html.Raw(Model.Body)
- 
-@Html.Partial("_Findvendor")
 @if (Model.Id == 17)
 {
     <script>
-      
 $(function () {
-
             $("select.main").on("change", function () {
                 //remove active
                 $("select.models.active").removeClass("active");
@@ -121,10 +109,8 @@ $(function () {
                     subList.addClass("active");
                 }
             });
-
         });
 </script>
-   
 }
 @if (Model.Id == 20)
 {

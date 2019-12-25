@@ -3,26 +3,18 @@
 @using Nop.Core.Infrastructure;
 @{
     var displayMiniProfiler = EngineContext.Current.Resolve<Nop.Core.Domain.StoreInformationSettings>().DisplayMiniProfilerInPublicStore;
-
 	 Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/bootstrap.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/owl.carousel.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/owl.theme.default.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/lightslider.min.css");
- 
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/jquery.mmenu.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/font.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/jquery.mmenu.positioning.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/site-pack.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/style.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/responsive.css");
-
-
-
-
     Html.AddScriptParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/js/jquery-3.3.1.min.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/jquery.mmenu.js", true);
-
-
     //X-UA-Compatible tag
     var commonSettings = EngineContext.Current.Resolve<CommonSettings>();
     if (commonSettings.RenderXuaCompatible)
@@ -46,28 +38,24 @@
     <meta name="generator" content="nopCommerce" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     @Html.NopHeadCustom()
- 
     @Html.Partial("Head")
     @Html.Widget("head_html_tag")
-	<link href="/Themes/DefaultClean/Content/css/swiper.min.css" rel="stylesheet" type="text/css" />
+    <link href="/Themes/DefaultClean/Content/css/swiper.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
           integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-		  
     @Html.NopCssFiles(this.Url, ResourceLocation.Head)
     @Html.NopScripts(this.Url, ResourceLocation.Head)
-	  @RenderSection("header", required: false)
-
-
+    @RenderSection("header", required: false)
     @Html.NopCanonicalUrls()
     @Html.Action("RssHeaderLink", "News")
     @Html.Action("RssHeaderLink", "Blog")
-  
     @Html.Action("Favicon", "Common")
     @if (displayMiniProfiler)
     {
         @StackExchange.Profiling.MiniProfiler.RenderIncludes()
     }
-    
+
+    @RenderSection("Css", required: false)
 </head>
 <body>
     @RenderBody()
@@ -87,11 +75,9 @@
                     ]
                 }
             ]
-   
         });
     });
     $('#menu li a').click(function () {
-
         //console.log("Clicked");
         $('#menu li a.active-2').removeClass('active-2');
         $(this).addClass('active-2');
@@ -115,7 +101,6 @@
         $(this).next().slideToggle();
         $(this).toggleClass('active');
     });
-    
     $(".menu-toggle").click(function(){
         $(".menu-mb-navi").toggle();
     });
@@ -123,9 +108,6 @@
         $(".menu-mb-navi").addClass('.close-item');
         $(".menu-mb-navi").toggle();
     });
-      
 	  </script>
-   
-   
 </body>
 </html>

@@ -78,6 +78,8 @@ namespace Nop.Web.Controllers
                 IsPasswordProtected = topic.IsPasswordProtected,
                 Title = topic.IsPasswordProtected ? "" : topic.GetLocalized(x => x.Title),
                 Body = topic.IsPasswordProtected ? "" : topic.GetLocalized(x => x.Body),
+                Css=topic.Css,
+                Script=topic.Script,
                 MetaKeywords = topic.GetLocalized(x => x.MetaKeywords),
                 MetaDescription = topic.GetLocalized(x => x.MetaDescription),
                 MetaTitle = topic.GetLocalized(x => x.MetaTitle),
@@ -235,6 +237,36 @@ namespace Nop.Web.Controllers
             }
             );
             return PartialView("_GetTopic", cacheModel);
+        }
+
+        [ChildActionOnly]
+        public ActionResult _GetTopicBySystem(string systemname)
+        {
+            var cacheKey = string.Format(ModelCacheEventConsumer.TOPIC_MODEL_BY_SYSTEMNAME_KEY,
+                 systemname,
+                 _workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id,
+                 string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()));
+            var cacheModel = _cacheManager.Get(cacheKey, () =>
+            {
+                //load by store
+                var topic = _topicService.GetTopicBySystemName(systemname, _storeContext.CurrentStore.Id);
+                if (topic == null)
+                    return null;
+                if (!topic.Published)
+                    return null;
+                //Store mapping
+                if (!_storeMappingService.Authorize(topic))
+                    return null;
+                //ACL (access control list)
+                if (!_aclService.Authorize(topic))
+                    return null;
+                return PrepareTopicModel(topic);
+            });
+
+            if (cacheModel == null)
+                return Content("");
+
+            return PartialView("_GetTopicBySystem", cacheModel);
         }
 
 

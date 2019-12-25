@@ -12,16 +12,13 @@
     Html.AddMetaKeywordParts(Model.MetaKeywords);
     //page class
     Html.AppendPageCssClassParts("html-product-details-page");
-
     var seoSettings = EngineContext.Current.Resolve<SeoSettings>();
-
     //canonical URL
     if (seoSettings.CanonicalUrlsEnabled)
     {
         var productUrl = Url.RouteUrl("Product", new { SeName = Model.SeName }, this.Request.Url.Scheme);
         Html.AddCanonicalUrlParts(productUrl);
     }
-
     //open graph META tags
     if (seoSettings.OpenGraphMetaTags)
     {
@@ -32,7 +29,6 @@
         Html.AddHeadCustomParts("<meta property=\"og:url\" content=\"" + Request.Url.AbsoluteUri + "\" />");
         Html.AddHeadCustomParts("<meta property=\"og:site_name\" content=\"" + Html.Encode(Model.CurrentStoreName) + "\" />");
     }
-
     //Twitter META tags
     if (seoSettings.TwitterMetaTags)
     {
@@ -53,7 +49,6 @@
 <div class="page product-details-page">
     @Html.Raw(Model.FullDescription)
 </div>
-
 @section header
 {
     @if (Model.Id == 51)
@@ -81,7 +76,7 @@
           rel="stylesheet" type="text/css" />
     <link href="Content/carry/maximenuck.css"
           rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Arial" rel="stylesheet" type="text/css" />
+
     <link href="Content/carry/beez3-position1.css"
           rel="stylesheet" type="text/css" />
     <link href="Content/carry/maximenuresponsiveck.css" rel="stylesheet"
@@ -93,9 +88,7 @@
             {"csrf.token":"f22131b97d47d3aa3aebfe70deaa5857","system.paths":{"root":"","base":""},"joomla.jtext":{"COM_SPPAGEBUILDER_FRONTEND_EDITOR":"Frontend Editor","COM_SPPAGEBUILDER_PREVIEW":"Preview","COM_SPPAGEBUILDER_APPLY":"Apply","COM_SPPAGEBUILDER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER":"Media Manager","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FILES":"Upload Files","COM_SPPAGEBUILDER_MEDIA_MANAGER_CLOSE":"Close Modal","COM_SPPAGEBUILDER_MEDIA_MANAGER_INSERT":"Insert","COM_SPPAGEBUILDER_MEDIA_MANAGER_SEARCH":"Search","COM_SPPAGEBUILDER_MEDIA_MANAGER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE":"Delete","COM_SPPAGEBUILDER_MEDIA_MANAGER_CONFIRM_DELETE":"You are about to permanently delete this item. \\'Cancel\\' to stop, \\'OK\\' to delete.","COM_SPPAGEBUILDER_MEDIA_MANAGER_LOAD_MORE":"Load More","COM_SPPAGEBUILDER_MEDIA_MANAGER_UNSUPPORTED_FORMAT":"File format not supported.","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_MEDIA":"Browse Media","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_FOLDERS":"Browse Folders","COM_SPPAGEBUILDER_MEDIA_MANAGER_CREATE_FOLDER":"New Folder","COM_SPPAGEBUILDER_ADDON_ICON_SELECT":"Select Icon","COM_SPPAGEBUILDER_MEDIA_MANAGER_ENTER_DIRECTORY_NAME":"Please enter the name of the directory which should be created.","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_UPLOADING":"Uploading","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FAILED":"Upload Failed","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_LARGE":"This file is too large to upload.","COM_SPPAGEBUILDER_MEDIA_MANAGER_FILE_NOT_SUPPORTED":"File not supported","COM_SPPAGEBUILDER_ROW_OPTIONS":"Row Options","COM_SPPAGEBUILDER_ADD_NEW_ROW":"Add New Row","COM_SPPAGEBUILDER_DUPLICATE_ROW":"Duplicate row","COM_SPPAGEBUILDER_DISABLE_ROW":"Disable Row","COM_SPPAGEBUILDER_ENABLE_ROW":"Enable Row","COM_SPPAGEBUILDER_COPY_ROW":"Copy Row","COM_SPPAGEBUILDER_ROW_COPIED":"Copied","COM_SPPAGEBUILDER_PASTE_ROW":"Paste Row","COM_SPPAGEBUILDER_DELETE_ROW":"Delete Row","COM_SPPAGEBUILDER_ROW_TOGGLE":"Toggle Row","COM_SPPAGEBUILDER_DELETE_ROW_CONFIRMATION":"Do you really want to delete this row?","COM_SPPAGEBUILDER_ROW_COLUMNS_MANAGEMENT":"Add\/Manage Columns","COM_SPPAGEBUILDER_ROW_COLUMNS_CUSTOM":"Custom","COM_SPPAGEBUILDER_ROW_COLUMNS_GENERATE":"Generate","COM_SPPAGEBUILDER_IMPORT_PAGE":"Import","COM_SPPAGEBUILDER_IMPORT_PAGE_ALT":"Import","COM_SPPAGEBUILDER_EXPORT_PAGE":"Export","COM_SPPAGEBUILDER_PAGE_TEMPLATES":"Page Templates","COM_SPPAGEBUILDER_UNDO":"Undo","COM_SPPAGEBUILDER_REDO":"Redo","COM_SPPAGEBUILDER_SAVE":"Save","COM_SPPAGEBUILDER_ROW_COLUMNS_OPTIONS":"Column Options","COM_SPPAGEBUILDER_DELETE_COLUMN":"Delete Column","COM_SPPAGEBUILDER_ADD_NEW_ADDON":"Add New Addon","COM_SPPAGEBUILDER_ADDON":"Addon","COM_SPPAGEBUILDER_DELETE_ADDON":"Delete Addon","COM_SPPAGEBUILDER_DUPLICATE_ADDON":"Clone Addon","COM_SPPAGEBUILDER_EDIT_ADDON":"Edit Addon","COM_SPPAGEBUILDER_ADDONS_LIST":"Addons List","COM_SPPAGEBUILDER_ALL":"All","COM_SPPAGEBUILDER_MODAL_CLOSE":"Close Modal","COM_SPPAGEBUILDER_DISABLE_COLUMN":"Disable Column","COM_SPPAGEBUILDER_ENABLE_COLUMN":"Enable Column","COM_SPPAGEBUILDER_YES":"Yes","COM_SPPAGEBUILDER_NO":"No","COM_SPPAGEBUILDER_PAGE_TEMPLATES_LIST":"Templates List","COM_SPPAGEBUILDER_PAGE_TEMPLATE_LOAD":"Load","COM_SPPAGEBUILDER_ENABLE_ADDON":"Enable Addon","COM_SPPAGEBUILDER_DISABLE_ADDON":"Disable Addon","COM_SPPAGEBUILDER_ADDON_PARENT_COLUMN":"Parent Column","COM_SPPAGEBUILDER_ADD_NEW_INNER_ROW":"Add Inner Row","COM_SPPAGEBUILDER_MOVE_COLUMN":"Move Column"}}
         </script>
         <script src="media/system/js/core557c.js?5685c1e109510f1aa1514c60372ed09b" type="text/javascript"></script>
-        <script src="media/jui/js/jquery.min557c.js?5685c1e109510f1aa1514c60372ed09b" type="text/javascript"></script>
-        <script src="media/jui/js/jquery-noconflict557c.js?5685c1e109510f1aa1514c60372ed09b"
-                type="text/javascript"></script>
+     
         <script src="media/jui/js/jquery-migrate.min557c.js?5685c1e109510f1aa1514c60372ed09b"
                 type="text/javascript"></script>
     <script src="Content/carry/parallax.min.js"
@@ -117,7 +110,6 @@
             $('#maximenuck154').MobileMaxiMenu({ usemodules: 0, container: 'menucontainer', showdesc: 0, showlogo: 1, useimages: 0, menuid: 'maximenuck154', showmobilemenutext: 'custom', mobilemenutext: 'Suzuki Việt Nam', mobilebackbuttontext: 'Back', displaytype: 'fade', displayeffect: 'open' });
         });
         </script>
-       
         <link rel="apple-touch-icon-precomposed" href="templates/suzukivietnam/apple_touch_icon.png">
         <link rel="stylesheet" href="templates/suzukivietnam/styles/Suzuki%202/css/bootstrap.css">
         <link rel="stylesheet" href="templates/suzukivietnam/styles/Suzuki%202/css/theme.css">
@@ -141,7 +133,6 @@
           type="text/css" />
     <link href="Content/carry/magnific-popup.css" rel="stylesheet"
           type="text/css" />
-       
         <link href="Content/carry/41effcb45eecb3187706f84203b32bd7.css"
               rel="stylesheet" type="text/css" />
         <link href="Content/carry/a1d33ae602fced907c671e32cb930085.css"
@@ -158,23 +149,20 @@
           rel="stylesheet" type="text/css" />
     <link href="Content/carry/maximenuck.css"
           rel="stylesheet" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Arial" rel="stylesheet" type="text/css" />
+
     <link href="Content/carry/beez3-position1.css"
           rel="stylesheet" type="text/css" />
     <link href="Content/carry/maximenuresponsiveck.css" rel="stylesheet"
           type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400|Pacifico:400|Average:400|Open+Sans:400|Raleway:400|Bebas:400&amp;subset=latin"
           rel="stylesheet" type="text/css" />
-   
-
         <script type="application/json"
                 class="joomla-script-options new">
             {"csrf.token":"f22131b97d47d3aa3aebfe70deaa5857","system.paths":{"root":"","base":""},"joomla.jtext":{"COM_SPPAGEBUILDER_FRONTEND_EDITOR":"Frontend Editor","COM_SPPAGEBUILDER_PREVIEW":"Preview","COM_SPPAGEBUILDER_APPLY":"Apply","COM_SPPAGEBUILDER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER":"Media Manager","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FILES":"Upload Files","COM_SPPAGEBUILDER_MEDIA_MANAGER_CLOSE":"Close Modal","COM_SPPAGEBUILDER_MEDIA_MANAGER_INSERT":"Insert","COM_SPPAGEBUILDER_MEDIA_MANAGER_SEARCH":"Search","COM_SPPAGEBUILDER_MEDIA_MANAGER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE":"Delete","COM_SPPAGEBUILDER_MEDIA_MANAGER_CONFIRM_DELETE":"You are about to permanently delete this item. \\'Cancel\\' to stop, \\'OK\\' to delete.","COM_SPPAGEBUILDER_MEDIA_MANAGER_LOAD_MORE":"Load More","COM_SPPAGEBUILDER_MEDIA_MANAGER_UNSUPPORTED_FORMAT":"File format not supported.","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_MEDIA":"Browse Media","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_FOLDERS":"Browse Folders","COM_SPPAGEBUILDER_MEDIA_MANAGER_CREATE_FOLDER":"New Folder","COM_SPPAGEBUILDER_ADDON_ICON_SELECT":"Select Icon","COM_SPPAGEBUILDER_MEDIA_MANAGER_ENTER_DIRECTORY_NAME":"Please enter the name of the directory which should be created.","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_UPLOADING":"Uploading","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FAILED":"Upload Failed","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_LARGE":"This file is too large to upload.","COM_SPPAGEBUILDER_MEDIA_MANAGER_FILE_NOT_SUPPORTED":"File not supported","COM_SPPAGEBUILDER_ROW_OPTIONS":"Row Options","COM_SPPAGEBUILDER_ADD_NEW_ROW":"Add New Row","COM_SPPAGEBUILDER_DUPLICATE_ROW":"Duplicate row","COM_SPPAGEBUILDER_DISABLE_ROW":"Disable Row","COM_SPPAGEBUILDER_ENABLE_ROW":"Enable Row","COM_SPPAGEBUILDER_COPY_ROW":"Copy Row","COM_SPPAGEBUILDER_ROW_COPIED":"Copied","COM_SPPAGEBUILDER_PASTE_ROW":"Paste Row","COM_SPPAGEBUILDER_DELETE_ROW":"Delete Row","COM_SPPAGEBUILDER_ROW_TOGGLE":"Toggle Row","COM_SPPAGEBUILDER_DELETE_ROW_CONFIRMATION":"Do you really want to delete this row?","COM_SPPAGEBUILDER_ROW_COLUMNS_MANAGEMENT":"Add\/Manage Columns","COM_SPPAGEBUILDER_ROW_COLUMNS_CUSTOM":"Custom","COM_SPPAGEBUILDER_ROW_COLUMNS_GENERATE":"Generate","COM_SPPAGEBUILDER_IMPORT_PAGE":"Import","COM_SPPAGEBUILDER_IMPORT_PAGE_ALT":"Import","COM_SPPAGEBUILDER_EXPORT_PAGE":"Export","COM_SPPAGEBUILDER_PAGE_TEMPLATES":"Page Templates","COM_SPPAGEBUILDER_UNDO":"Undo","COM_SPPAGEBUILDER_REDO":"Redo","COM_SPPAGEBUILDER_SAVE":"Save","COM_SPPAGEBUILDER_ROW_COLUMNS_OPTIONS":"Column Options","COM_SPPAGEBUILDER_DELETE_COLUMN":"Delete Column","COM_SPPAGEBUILDER_ADD_NEW_ADDON":"Add New Addon","COM_SPPAGEBUILDER_ADDON":"Addon","COM_SPPAGEBUILDER_DELETE_ADDON":"Delete Addon","COM_SPPAGEBUILDER_DUPLICATE_ADDON":"Clone Addon","COM_SPPAGEBUILDER_EDIT_ADDON":"Edit Addon","COM_SPPAGEBUILDER_ADDONS_LIST":"Addons List","COM_SPPAGEBUILDER_ALL":"All","COM_SPPAGEBUILDER_MODAL_CLOSE":"Close Modal","COM_SPPAGEBUILDER_DISABLE_COLUMN":"Disable Column","COM_SPPAGEBUILDER_ENABLE_COLUMN":"Enable Column","COM_SPPAGEBUILDER_YES":"Yes","COM_SPPAGEBUILDER_NO":"No","COM_SPPAGEBUILDER_PAGE_TEMPLATES_LIST":"Templates List","COM_SPPAGEBUILDER_PAGE_TEMPLATE_LOAD":"Load","COM_SPPAGEBUILDER_ENABLE_ADDON":"Enable Addon","COM_SPPAGEBUILDER_DISABLE_ADDON":"Disable Addon","COM_SPPAGEBUILDER_ADDON_PARENT_COLUMN":"Parent Column","COM_SPPAGEBUILDER_ADD_NEW_INNER_ROW":"Add Inner Row","COM_SPPAGEBUILDER_MOVE_COLUMN":"Move Column"}}
         </script>
         <script src="media/system/js/core557c.js?5685c1e109510f1aa1514c60372ed09b" type="text/javascript"></script>
-        <script src="media/jui/js/jquery.min557c.js?5685c1e109510f1aa1514c60372ed09b" type="text/javascript"></script>
-        <script src="media/jui/js/jquery-noconflict557c.js?5685c1e109510f1aa1514c60372ed09b"
-                type="text/javascript"></script>
+
+      
         <script src="media/jui/js/jquery-migrate.min557c.js?5685c1e109510f1aa1514c60372ed09b"
                 type="text/javascript"></script>
     <script src="Content/carry/parallax.min.js"
@@ -196,8 +184,6 @@
             $('#maximenuck154').MobileMaxiMenu({ usemodules: 0, container: 'menucontainer', showdesc: 0, showlogo: 1, useimages: 0, menuid: 'maximenuck154', showmobilemenutext: 'custom', mobilemenutext: 'Suzuki Việt Nam', mobilebackbuttontext: 'Back', displaytype: 'fade', displayeffect: 'open' });
         });
         </script>
-
-
         <link rel="apple-touch-icon-precomposed" href=" templates/suzukivietnam/apple_touch_icon.png">
         <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/bootstrap.css">
         <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/theme.css">
@@ -227,24 +213,21 @@
           rel="stylesheet" type="text/css" />
     <link href="Content/carry/maximenuck.css"
           rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Arial" rel="stylesheet" type="text/css" />
+
     <link href="Content/carry/beez3-position1.css"
           rel="stylesheet" type="text/css" />
     <link href="Content/carry/maximenuresponsiveck.css" rel="stylesheet"
           type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400|Pacifico:400|Average:400|Open+Sans:400|Raleway:400|Bebas:400&amp;subset=latin"
               rel="stylesheet" type="text/css" />
-
         <script type="application/json"
                 class="joomla-script-options new">
             {"csrf.token":"f22131b97d47d3aa3aebfe70deaa5857","system.paths":{"root":"","base":""},"joomla.jtext":{"COM_SPPAGEBUILDER_FRONTEND_EDITOR":"Frontend Editor","COM_SPPAGEBUILDER_PREVIEW":"Preview","COM_SPPAGEBUILDER_APPLY":"Apply","COM_SPPAGEBUILDER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER":"Media Manager","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FILES":"Upload Files","COM_SPPAGEBUILDER_MEDIA_MANAGER_CLOSE":"Close Modal","COM_SPPAGEBUILDER_MEDIA_MANAGER_INSERT":"Insert","COM_SPPAGEBUILDER_MEDIA_MANAGER_SEARCH":"Search","COM_SPPAGEBUILDER_MEDIA_MANAGER_CANCEL":"Cancel","COM_SPPAGEBUILDER_MEDIA_MANAGER_DELETE":"Delete","COM_SPPAGEBUILDER_MEDIA_MANAGER_CONFIRM_DELETE":"You are about to permanently delete this item. \\'Cancel\\' to stop, \\'OK\\' to delete.","COM_SPPAGEBUILDER_MEDIA_MANAGER_LOAD_MORE":"Load More","COM_SPPAGEBUILDER_MEDIA_MANAGER_UNSUPPORTED_FORMAT":"File format not supported.","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_MEDIA":"Browse Media","COM_SPPAGEBUILDER_MEDIA_MANAGER_BROWSE_FOLDERS":"Browse Folders","COM_SPPAGEBUILDER_MEDIA_MANAGER_CREATE_FOLDER":"New Folder","COM_SPPAGEBUILDER_ADDON_ICON_SELECT":"Select Icon","COM_SPPAGEBUILDER_MEDIA_MANAGER_ENTER_DIRECTORY_NAME":"Please enter the name of the directory which should be created.","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_UPLOADING":"Uploading","COM_SPPAGEBUILDER_MEDIA_MANAGER_UPLOAD_FAILED":"Upload Failed","COM_SPPAGEBUILDER_MEDIA_MANAGER_MEDIA_LARGE":"This file is too large to upload.","COM_SPPAGEBUILDER_MEDIA_MANAGER_FILE_NOT_SUPPORTED":"File not supported","COM_SPPAGEBUILDER_ROW_OPTIONS":"Row Options","COM_SPPAGEBUILDER_ADD_NEW_ROW":"Add New Row","COM_SPPAGEBUILDER_DUPLICATE_ROW":"Duplicate row","COM_SPPAGEBUILDER_DISABLE_ROW":"Disable Row","COM_SPPAGEBUILDER_ENABLE_ROW":"Enable Row","COM_SPPAGEBUILDER_COPY_ROW":"Copy Row","COM_SPPAGEBUILDER_ROW_COPIED":"Copied","COM_SPPAGEBUILDER_PASTE_ROW":"Paste Row","COM_SPPAGEBUILDER_DELETE_ROW":"Delete Row","COM_SPPAGEBUILDER_ROW_TOGGLE":"Toggle Row","COM_SPPAGEBUILDER_DELETE_ROW_CONFIRMATION":"Do you really want to delete this row?","COM_SPPAGEBUILDER_ROW_COLUMNS_MANAGEMENT":"Add\/Manage Columns","COM_SPPAGEBUILDER_ROW_COLUMNS_CUSTOM":"Custom","COM_SPPAGEBUILDER_ROW_COLUMNS_GENERATE":"Generate","COM_SPPAGEBUILDER_IMPORT_PAGE":"Import","COM_SPPAGEBUILDER_IMPORT_PAGE_ALT":"Import","COM_SPPAGEBUILDER_EXPORT_PAGE":"Export","COM_SPPAGEBUILDER_PAGE_TEMPLATES":"Page Templates","COM_SPPAGEBUILDER_UNDO":"Undo","COM_SPPAGEBUILDER_REDO":"Redo","COM_SPPAGEBUILDER_SAVE":"Save","COM_SPPAGEBUILDER_ROW_COLUMNS_OPTIONS":"Column Options","COM_SPPAGEBUILDER_DELETE_COLUMN":"Delete Column","COM_SPPAGEBUILDER_ADD_NEW_ADDON":"Add New Addon","COM_SPPAGEBUILDER_ADDON":"Addon","COM_SPPAGEBUILDER_DELETE_ADDON":"Delete Addon","COM_SPPAGEBUILDER_DUPLICATE_ADDON":"Clone Addon","COM_SPPAGEBUILDER_EDIT_ADDON":"Edit Addon","COM_SPPAGEBUILDER_ADDONS_LIST":"Addons List","COM_SPPAGEBUILDER_ALL":"All","COM_SPPAGEBUILDER_MODAL_CLOSE":"Close Modal","COM_SPPAGEBUILDER_DISABLE_COLUMN":"Disable Column","COM_SPPAGEBUILDER_ENABLE_COLUMN":"Enable Column","COM_SPPAGEBUILDER_YES":"Yes","COM_SPPAGEBUILDER_NO":"No","COM_SPPAGEBUILDER_PAGE_TEMPLATES_LIST":"Templates List","COM_SPPAGEBUILDER_PAGE_TEMPLATE_LOAD":"Load","COM_SPPAGEBUILDER_ENABLE_ADDON":"Enable Addon","COM_SPPAGEBUILDER_DISABLE_ADDON":"Disable Addon","COM_SPPAGEBUILDER_ADDON_PARENT_COLUMN":"Parent Column","COM_SPPAGEBUILDER_ADD_NEW_INNER_ROW":"Add Inner Row","COM_SPPAGEBUILDER_MOVE_COLUMN":"Move Column"}}
         </script>
         <script src=" media/system/js/core557c.js?5685c1e109510f1aa1514c60372ed09b"
                 type="text/javascript"></script>
-        <script src=" media/jui/js/jquery.min557c.js?5685c1e109510f1aa1514c60372ed09b"
-                type="text/javascript"></script>
-        <script src=" media/jui/js/jquery-noconflict557c.js?5685c1e109510f1aa1514c60372ed09b"
-                type="text/javascript"></script>
+      
+      
         <script src=" media/jui/js/jquery-migrate.min557c.js?5685c1e109510f1aa1514c60372ed09b"
                 type="text/javascript"></script>
     <script src="Content/carry/parallax.min.js"
@@ -261,9 +244,6 @@
             type="text/javascript"></script>
         <script src=" media/widgetkit/uikit2-0bd93abb.js" type="text/javascript"></script>
         <script src=" media/widgetkit/wk-scripts-4815056a.js" type="text/javascript"></script>
-
-
-
         <link rel="apple-touch-icon-precomposed" href=" templates/suzukivietnam/apple_touch_icon.png">
         <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/bootstrap.css">
         <link rel="stylesheet" href=" templates/suzukivietnam/styles/Suzuki%202/css/theme.css">
@@ -275,9 +255,5 @@
         <script src=" templates/suzukivietnam/warp/js/social.js"></script>
         <script src=" templates/suzukivietnam/js/theme.js"></script>
         <script src=" templates/suzukivietnam/js/parallax.js"></script>
-   
-
-
-
     }
 }

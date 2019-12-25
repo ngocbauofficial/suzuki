@@ -10,7 +10,8 @@ namespace Nop.Web.Infrastructure
         public void RegisterRoutes(RouteCollection routes)
         {
             //We reordered our routes so the most used ones are on top. It can improve performance.
-
+            // elFinder's connector route
+         
             //home page
             routes.MapLocalizedRoute("HomePage",
                             "",
@@ -128,7 +129,7 @@ namespace Nop.Web.Infrastructure
              //               new[] { "Nop.Web.Controllers" });
             //blog
             routes.MapLocalizedRoute("Blog",
-                            "blog",
+                            "khuyen-mai",
                             new { controller = "Blog", action = "List" },
                             new[] { "Nop.Web.Controllers" });
             //news
@@ -137,10 +138,10 @@ namespace Nop.Web.Infrastructure
                       new { controller = "CostEstimates", action = "Index" },
                       new[] { "Nop.Web.Controllers" });
 
-            routes.MapLocalizedRoute("TimKiemDaiLy",
-                   "tim-kiem-dai-ly",
-                   new { controller = "Catalog", action = "FindVendor" },
-                   new[] { "Nop.Web.Controllers" });
+          //  routes.MapLocalizedRoute("TimKiemDaiLy",
+          //         "tim-kiem-dai-ly",
+           //        new { controller = "Catalog", action = "FindVendor" },
+            //       new[] { "Nop.Web.Controllers" });
             routes.MapLocalizedRoute("DangKyLaiThu",
                    "dang-ky-lai-thu",
                    new { controller = "Order", action = "Booking" },

@@ -7,12 +7,14 @@
         @RenderSection("Breadcrumb")
     }
 }
-
-    @Html.Widget("main_column_before")
-    @RenderBody()
-    @Html.Widget("main_column_after")
+@Html.Widget("main_column_before")
+@RenderBody()
+@Html.Widget("main_column_after")
 @section scripts {
-    @RenderSection("scripts",false)
+    @RenderSection("scripts", false)
+}
+@section Css {
+    @RenderSection("Css", false)
 }
 @section header {
     @RenderSection("header", false)
