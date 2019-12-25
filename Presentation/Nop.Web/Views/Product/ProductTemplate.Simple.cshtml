@@ -49,112 +49,116 @@
     }
 }
 @*
-        <!--product breadcrumb-->
-        @section Breadcrumb
-        {
-            @Html.Partial("_ProductBreadcrumb", Model.Breadcrumb)
-        }
-        @Html.Widget("productdetails_after_breadcrumb", Model.Id)
-        <div class="page product-details-page">
-            <div class="page-body">
-                @Html.Widget("productdetails_top", Model.Id)
-                @using (Html.BeginRouteForm("Product", new { SeName = Model.SeName }, FormMethod.Post, new { id = "product-details-form" }))
-                {
-                    <div itemscope itemtype="http://schema.org/Product" data-productid="@Model.Id">
-                        <div class="product-essential">
-                            @Html.Widget("productdetails_before_pictures", Model.Id)
-                            <!--product pictures-->
-                            @Html.Partial("_ProductDetailsPictures", Model)
-                            @Html.Widget("productdetails_after_pictures", Model.Id)
-                            <div class="overview">
-                                @Html.Partial("_Discontinued", Model)
-                                <div class="product-name">
-                                    <h1 itemprop="name">
-                                        @Model.Name
-                                    </h1>
-                                </div>
-                                @if (!String.IsNullOrEmpty(Model.ShortDescription))
-                                {
-                                    <div class="short-description">
-                                        @Html.Raw(Model.ShortDescription)
-                                    </div>
-                                }
-                                @Html.Widget("productdetails_overview_top", Model.Id)
-                                <!--product reviews-->
-                                @Html.Partial("_ProductReviewOverview", Model.ProductReviewOverview)
-                                <!--manufacturers-->
-                                @Html.Partial("_ProductManufacturers", Model.ProductManufacturers)
-                                <!--availability-->
-                                @Html.Partial("_Availability", Model)
-                                <!--SKU, MAN, GTIN, vendor-->
-                                @Html.Partial("_SKU_Man_GTIN_Ven", Model)
-                                <!--delivery-->
-                                @Html.Partial("_DeliveryInfo", Model)
-                                <!--sample download-->
-                                @Html.Partial("_DownloadSample", Model)
-                                <!--attributes-->
-                                @{
-                                    var dataDictAttributes = new ViewDataDictionary();
-                                    dataDictAttributes.TemplateInfo.HtmlFieldPrefix = string.Format("attributes_{0}", Model.Id);
-                                    @Html.Partial("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
-                                }
-                                <!--gift card-->
-                                @{
-                                    var dataDictGiftCard = new ViewDataDictionary();
-                                    dataDictGiftCard.TemplateInfo.HtmlFieldPrefix = string.Format("giftcard_{0}", Model.Id);
-                                    @Html.Partial("_GiftCardInfo", Model.GiftCard, dataDictGiftCard)
-                                }
-                                <!--rental info-->
-                                @{
-                                    var dataDictRental = new ViewDataDictionary();
-                                    dataDictRental.TemplateInfo.HtmlFieldPrefix = string.Format("rental_{0}", Model.Id);
-                                    @Html.Partial("_RentalInfo", Model, dataDictRental)
-                                }
-                                <!--price & add to cart-->
-                                @{
-                                    var dataDictPrice = new ViewDataDictionary();
-                                    dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
-                                    @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
-                                    @Html.Partial("_ProductTierPrices", Model.TierPrices)
-                                    var dataDictAddToCart = new ViewDataDictionary();
-                                    dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
-                                    @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)
-                                }
-                                <!--wishlist, compare, email a friend-->
-                                <div class="overview-buttons">
-                                    @Html.Widget("productdetails_inside_overview_buttons_before", Model.Id)
-                                    @{
-                                        var dataDictAddToWishlist = new ViewDataDictionary();
-                                        dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
-                                        @Html.Partial("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
-                                    }
-                                    @Html.Partial("_CompareProductsButton", Model)
-                                    @Html.Partial("_ProductEmailAFriendButton", Model)
-                                    @Html.Widget("productdetails_inside_overview_buttons_after", Model.Id)
-                                </div>
-                                @Html.Partial("_ShareButton", Model)
-                                @Html.Widget("productdetails_overview_bottom", Model.Id)
+    <!--product breadcrumb-->
+    @section Breadcrumb
+    {
+        @Html.Partial("_ProductBreadcrumb", Model.Breadcrumb)
+    }
+    @Html.Widget("productdetails_after_breadcrumb", Model.Id)
+    <div class="page product-details-page">
+        <div class="page-body">
+            @Html.Widget("productdetails_top", Model.Id)
+            @using (Html.BeginRouteForm("Product", new { SeName = Model.SeName }, FormMethod.Post, new { id = "product-details-form" }))
+            {
+                <div itemscope itemtype="http://schema.org/Product" data-productid="@Model.Id">
+                    <div class="product-essential">
+                        @Html.Widget("productdetails_before_pictures", Model.Id)
+                        <!--product pictures-->
+                        @Html.Partial("_ProductDetailsPictures", Model)
+                        @Html.Widget("productdetails_after_pictures", Model.Id)
+                        <div class="overview">
+                            @Html.Partial("_Discontinued", Model)
+                            <div class="product-name">
+                                <h1 itemprop="name">
+                                    @Model.Name
+                                </h1>
                             </div>
-                            @if (!String.IsNullOrEmpty(Model.FullDescription))
+                            @if (!String.IsNullOrEmpty(Model.ShortDescription))
                             {
-                                <div class="full-description" itemprop="description">
-                                    @Html.Raw(Model.FullDescription)
+                                <div class="short-description">
+                                    @Html.Raw(Model.ShortDescription)
                                 </div>
                             }
+                            @Html.Widget("productdetails_overview_top", Model.Id)
+                            <!--product reviews-->
+                            @Html.Partial("_ProductReviewOverview", Model.ProductReviewOverview)
+                            <!--manufacturers-->
+                            @Html.Partial("_ProductManufacturers", Model.ProductManufacturers)
+                            <!--availability-->
+                            @Html.Partial("_Availability", Model)
+                            <!--SKU, MAN, GTIN, vendor-->
+                            @Html.Partial("_SKU_Man_GTIN_Ven", Model)
+                            <!--delivery-->
+                            @Html.Partial("_DeliveryInfo", Model)
+                            <!--sample download-->
+                            @Html.Partial("_DownloadSample", Model)
+                            <!--attributes-->
+                            @{
+                                var dataDictAttributes = new ViewDataDictionary();
+                                dataDictAttributes.TemplateInfo.HtmlFieldPrefix = string.Format("attributes_{0}", Model.Id);
+                                @Html.Partial("_ProductAttributes", Model.ProductAttributes, dataDictAttributes)
+                            }
+                            <!--gift card-->
+                            @{
+                                var dataDictGiftCard = new ViewDataDictionary();
+                                dataDictGiftCard.TemplateInfo.HtmlFieldPrefix = string.Format("giftcard_{0}", Model.Id);
+                                @Html.Partial("_GiftCardInfo", Model.GiftCard, dataDictGiftCard)
+                            }
+                            <!--rental info-->
+                            @{
+                                var dataDictRental = new ViewDataDictionary();
+                                dataDictRental.TemplateInfo.HtmlFieldPrefix = string.Format("rental_{0}", Model.Id);
+                                @Html.Partial("_RentalInfo", Model, dataDictRental)
+                            }
+                            <!--price & add to cart-->
+                            @{
+                                var dataDictPrice = new ViewDataDictionary();
+                                dataDictPrice.TemplateInfo.HtmlFieldPrefix = string.Format("price_{0}", Model.Id);
+                                @Html.Partial("_ProductPrice", Model.ProductPrice, dataDictPrice)
+                                @Html.Partial("_ProductTierPrices", Model.TierPrices)
+                                var dataDictAddToCart = new ViewDataDictionary();
+                                dataDictAddToCart.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                                @Html.Partial("_AddToCart", Model.AddToCart, dataDictAddToCart)
+                            }
+                            <!--wishlist, compare, email a friend-->
+                            <div class="overview-buttons">
+                                @Html.Widget("productdetails_inside_overview_buttons_before", Model.Id)
+                                @{
+                                    var dataDictAddToWishlist = new ViewDataDictionary();
+                                    dataDictAddToWishlist.TemplateInfo.HtmlFieldPrefix = string.Format("addtocart_{0}", Model.Id);
+                                    @Html.Partial("_AddToWishlist", Model.AddToCart, dataDictAddToWishlist)
+                                }
+                                @Html.Partial("_CompareProductsButton", Model)
+                                @Html.Partial("_ProductEmailAFriendButton", Model)
+                                @Html.Widget("productdetails_inside_overview_buttons_after", Model.Id)
+                            </div>
+                            @Html.Partial("_ShareButton", Model)
+                            @Html.Widget("productdetails_overview_bottom", Model.Id)
                         </div>
-                        @Html.Widget("productdetails_before_collateral", Model.Id)
-                        <div class="product-collateral">
-                            @Html.Partial("_ProductSpecifications", Model.ProductSpecifications)
-                            @Html.Partial("_ProductTags", Model.ProductTags)
-                        </div>
-                        @Html.Action("ProductsAlsoPurchased", "Product", new { productId = Model.Id })
-                        @Html.Action("RelatedProducts", "Product", new { productId = Model.Id })
+                        @if (!String.IsNullOrEmpty(Model.FullDescription))
+                        {
+                            <div class="full-description" itemprop="description">
+                                @Html.Raw(Model.FullDescription)
+                            </div>
+                        }
                     </div>
-                }
-                @Html.Widget("productdetails_bottom", Model.Id)
-            </div>
+                    @Html.Widget("productdetails_before_collateral", Model.Id)
+                    <div class="product-collateral">
+                        @Html.Partial("_ProductSpecifications", Model.ProductSpecifications)
+                        @Html.Partial("_ProductTags", Model.ProductTags)
+                    </div>
+                    @Html.Action("ProductsAlsoPurchased", "Product", new { productId = Model.Id })
+                    @Html.Action("RelatedProducts", "Product", new { productId = Model.Id })
+                </div>
+            }
+            @Html.Widget("productdetails_bottom", Model.Id)
         </div>
+    </div>
 *@
+@section Breadcrumb
+        {
+    @Html.Partial("_ProductBreadcrumb", Model.Breadcrumb)
+}
 <div class="slide-background">
     <div class="video container">
         <video src="@Model.Video" playsinline loop muted autoplay width="100%" height="50%"> </video>
@@ -239,26 +243,26 @@
         </div>
     </div>
 </section>
- <section id="1">
-                <!-- <div class="container "> -->
-                <div class="container">
-                    <div class="view360ct">
-                        <iframe onload="iFrameHeight()" id="blockrandom" name=""
-                            src="~/Content/360/@Model.Id/large/main.html" width="100%" height="800"
-                            scrolling="no" frameborder="0" class="viewfull" __idm_frm__="36" style="height: 850px;"></iframe>
-                    </div>
-                </div>
-                <!-- </div> -->
-            </section>
+<section id="1">
+    <!-- <div class="container "> -->
+    <div class="container">
+        <div class="view360ct">
+            <iframe onload="iFrameHeight()" id="blockrandom" name=""
+                    src="~/Content/360/@Model.Id/large/main.html" width="100%" height="800"
+                    scrolling="no" frameborder="0" class="viewfull" __idm_frm__="36" style="height: 850px;"></iframe>
+        </div>
+    </div>
+    <!-- </div> -->
+</section>
 <section id="2">
     <div class="container">
         <div class="mode">
-            <h1 class="text-uppercase text-center">Phiên Bản</h1>           
+            <h1 class="text-uppercase text-center">Phiên Bản</h1>
         </div>
-    @foreach(var item in Model.ProductAttributes)
-    {
-        @Html.Raw(item.Description);
-    }
+        @foreach (var item in Model.ProductAttributes)
+        {
+            @Html.Raw(item.Description);
+        }
         <div class="vehicle-call-to-action vehicle-call-to-action-15">
             <a href="/dang-ky-lai-thu?productid=@Model.Id">
                 <small>Đăng ký </small>
@@ -320,135 +324,135 @@
         <div class="clear-float"></div>
     </div>
 </section>
-    <section id="4">
-        <div class="container">
-            <div class="furniture">
-                <h1 class="text-uppercase text-center">nội thất</h1>       
-            </div>
-            <div class="test mt-3" style="background-image: url(@Model.NoiThat1.FullSizeImageUrl);">
-                <input type="checkbox" class="input" id="input1" name="inputs">
-                <input type="checkbox" class="input" id="input2" name="inputs">
-                <input type="checkbox" class="input" id="input3" name="inputs">
-                <input type="checkbox" class="input" id="input4" name="inputs">
-                <label for="input1">
-                    <div id="b1" class="button" >+</div>
-                </label>
-                <label for="input2">
-                    <div id="b2" class="button" >+</div>
-                </label>
-                <label for="input3">
-                    <div id="b3" class="button">+</div>
-                </label>
-                <label for="input4">
-                    <div id="b4" class="button">+</div>
-                </label>
-                <!-- hộp số -->
-                <div id="content1" class="content">
-                    <div style="text-align: right;">
-                        <label for="input1" class="cross"> <span style="float:left;">Hộp số</span> X</label>
-                    </div>
-                    <img src="@Model.NoiThat2.FullSizeImageUrl" alt="" class="img-fluid" style="height:88%;">
-                </div>
-                <!-- máy lạnh -->
-                <div id="content2" class="content">
-                    <div style="text-align: right;">
-                        <label for="input2" class="cross"><span style="float:left;">Máy lạnh</span>X</label>
-                    </div>
-                    <img src="@Model.NoiThat3.FullSizeImageUrl" alt="" class="img-fluid"
-                         style="height:88%;">
-                </div>
-                <!-- ghế -->
-                <div id="content3" class="content">
-                    <div style="text-align: right;">
-                        <label for="input3" class="cross"><span style="float:left;">gạt số</span>X</label>
-                    </div>
-                    <img src="@Model.NoiThat4.FullSizeImageUrl" alt="" class="img-fluid"
-                         style="height:88%;">
-                </div>
-                <!-- gạt số -->
-                <div id="content4" class="content">
-                    <div style="text-align: right;">
-                        <label for="input4" class="cross"><span style="float:left;">Ghế Trước</span>X</label>
-                    </div>
-                    <img src="@Model.NoiThat5.FullSizeImageUrl" alt="" class="img-fluid"
-                         style="height:88%;">
-                </div>
-            </div>
-            <!-- galarymb -->
-            <div class="galary-mobile-2 mt-3">
-                <div class="owl-carousel galary-mb-mb owl-theme">
-                    <div class="item">
-                        <div class="popup-gallery">
-                            <a href="@Model.NoiThat1.FullSizeImageUrl"
-                               title="@Model.TextNoiThat1">
-                                <img src="@Model.NoiThat1.FullSizeImageUrl" width="100%"
-                                     height="100%">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="popup-gallery">
-                            <a href="@Model.NoiThat2.FullSizeImageUrl" title="@Model.TextNoiThat2">
-                                <img src="@Model.NoiThat2.FullSizeImageUrl" width="100%"
-                                     height="100%">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="popup-gallery">
-                            <a href="@Model.NoiThat3.FullSizeImageUrl" title="@Model.TextNoiThat3">
-                                <img src="@Model.NoiThat3.FullSizeImageUrl" width="100%" height="100%">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="popup-gallery">
-                            <a href="@Model.NoiThat4.FullSizeImageUrl"
-                               title="@Model.TextNoiThat4">
-                                <img src="@Model.NoiThat4.FullSizeImageUrl" width="100%"
-                                     height="100%">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="popup-gallery">
-                            <a href="@Model.NoiThat5.FullSizeImageUrl"
-                               title="@Model.TextNoiThat5">
-                                <img src="@Model.NoiThat5.FullSizeImageUrl" width="100%"
-                                     height="100%">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="vehicle-call-to-action vehicle-call-to-action-15">
-                <a href="/dang-ky-lai-thu?productid=@Model.Id">
-                    <small>Đăng ký </small>
-                    Lái thử
-                </a>
-            </div>
-            @Html.Partial("_DownloadSample", Model)
-            <div class="clear-float"></div>
+<section id="4">
+    <div class="container">
+        <div class="furniture">
+            <h1 class="text-uppercase text-center">nội thất</h1>
         </div>
-    </section>
-    @foreach (var item in Model.ProductSpecifications.Where(x => x.SpecificationAttributeId == 6))
-    {
-        <section class="container" id="5">
-                <div class="specifications">
-                    <h1 class="text-uppercase text-center"> @Html.Raw(item.SpecificationAttributeName) </h1>
+        <div class="test mt-3" style="background-image: url(@Model.NoiThat1.FullSizeImageUrl);">
+            <input type="checkbox" class="input" id="input1" name="inputs">
+            <input type="checkbox" class="input" id="input2" name="inputs">
+            <input type="checkbox" class="input" id="input3" name="inputs">
+            <input type="checkbox" class="input" id="input4" name="inputs">
+            <label for="input1">
+                <div id="b1" class="button">+</div>
+            </label>
+            <label for="input2">
+                <div id="b2" class="button">+</div>
+            </label>
+            <label for="input3">
+                <div id="b3" class="button">+</div>
+            </label>
+            <label for="input4">
+                <div id="b4" class="button">+</div>
+            </label>
+            <!-- hộp số -->
+            <div id="content1" class="content">
+                <div style="text-align: right;">
+                    <label for="input1" class="cross"> <span style="float:left;">Hộp số</span> X</label>
                 </div>
-            <div>
-                @Html.Raw(item.ValueRaw)
+                <img src="@Model.NoiThat2.FullSizeImageUrl" alt="" class="img-fluid" style="height:88%;">
             </div>
-            <div class="vehicle-call-to-action vehicle-call-to-action-15">
-                <a href="/dang-ky-lai-thu?productid=@Model.Id">
-                    <small>Đăng ký </small>
-                    Lái thử
-                </a>
+            <!-- máy lạnh -->
+            <div id="content2" class="content">
+                <div style="text-align: right;">
+                    <label for="input2" class="cross"><span style="float:left;">Máy lạnh</span>X</label>
+                </div>
+                <img src="@Model.NoiThat3.FullSizeImageUrl" alt="" class="img-fluid"
+                     style="height:88%;">
             </div>
-            @Html.Partial("_DownloadSample", Model)
-        </section>
-    }
+            <!-- ghế -->
+            <div id="content3" class="content">
+                <div style="text-align: right;">
+                    <label for="input3" class="cross"><span style="float:left;">gạt số</span>X</label>
+                </div>
+                <img src="@Model.NoiThat4.FullSizeImageUrl" alt="" class="img-fluid"
+                     style="height:88%;">
+            </div>
+            <!-- gạt số -->
+            <div id="content4" class="content">
+                <div style="text-align: right;">
+                    <label for="input4" class="cross"><span style="float:left;">Ghế Trước</span>X</label>
+                </div>
+                <img src="@Model.NoiThat5.FullSizeImageUrl" alt="" class="img-fluid"
+                     style="height:88%;">
+            </div>
+        </div>
+        <!-- galarymb -->
+        <div class="galary-mobile-2 mt-3">
+            <div class="owl-carousel galary-mb-mb owl-theme">
+                <div class="item">
+                    <div class="popup-gallery">
+                        <a href="@Model.NoiThat1.FullSizeImageUrl"
+                           title="@Model.TextNoiThat1">
+                            <img src="@Model.NoiThat1.FullSizeImageUrl" width="100%"
+                                 height="100%">
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="popup-gallery">
+                        <a href="@Model.NoiThat2.FullSizeImageUrl" title="@Model.TextNoiThat2">
+                            <img src="@Model.NoiThat2.FullSizeImageUrl" width="100%"
+                                 height="100%">
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="popup-gallery">
+                        <a href="@Model.NoiThat3.FullSizeImageUrl" title="@Model.TextNoiThat3">
+                            <img src="@Model.NoiThat3.FullSizeImageUrl" width="100%" height="100%">
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="popup-gallery">
+                        <a href="@Model.NoiThat4.FullSizeImageUrl"
+                           title="@Model.TextNoiThat4">
+                            <img src="@Model.NoiThat4.FullSizeImageUrl" width="100%"
+                                 height="100%">
+                        </a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="popup-gallery">
+                        <a href="@Model.NoiThat5.FullSizeImageUrl"
+                           title="@Model.TextNoiThat5">
+                            <img src="@Model.NoiThat5.FullSizeImageUrl" width="100%"
+                                 height="100%">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vehicle-call-to-action vehicle-call-to-action-15">
+            <a href="/dang-ky-lai-thu?productid=@Model.Id">
+                <small>Đăng ký </small>
+                Lái thử
+            </a>
+        </div>
+        @Html.Partial("_DownloadSample", Model)
+        <div class="clear-float"></div>
+    </div>
+</section>
+@foreach (var item in Model.ProductSpecifications.Where(x => x.SpecificationAttributeId == 6))
+{
+    <section class="container" id="5">
+        <div class="specifications">
+            <h1 class="text-uppercase text-center"> @Html.Raw(item.SpecificationAttributeName) </h1>
+        </div>
+        <div>
+            @Html.Raw(item.ValueRaw)
+        </div>
+        <div class="vehicle-call-to-action vehicle-call-to-action-15">
+            <a href="/dang-ky-lai-thu?productid=@Model.Id">
+                <small>Đăng ký </small>
+                Lái thử
+            </a>
+        </div>
+        @Html.Partial("_DownloadSample", Model)
+    </section>
+}
 <!-- end -->
 <section id="6">
     <div class="container phu-kien">
@@ -532,95 +536,93 @@
         <div class="price-list ">
             <h1 class="text-uppercase text-center">Bảng giá xe</h1>
         </div>
-     @{Html.RenderAction("_GetTopic", "Topic", new { topicId = 15 });}
+        @{Html.RenderAction("_GetTopic", "Topic", new { topicId = 15 });}
     </div>
 </section>
 @Html.Action("RelatedProducts", "Product", new { productId = Model.Id })
 @section scripts{
-<script>
-            $('.new-sp').owlCarousel({
-                loop: false,
-                margin: 10,
-                nav: true,
-                // autoplay:true,
-                responsive: {
-                    0: {
-                        items: 2
-                    },
-                    600: {
-                        items: 3
-                    },
-                    1000: {
-                        items: 4
-                    }
-                }
-            })
-</script>
-<script>
-            $(document).ready(function () {
-                // Add smooth scrolling to all links
-                $("a").on('click', function (event) {
-                    // Make sure this.hash has a value before overriding default behavior
-                    if (this.hash !== "") {
-                        // Prevent default anchor click behavior
-                        event.preventDefault();
-                        // Store hash
-                        var hash = this.hash;
-                        // Using jQuery's animate() method to add smooth page scroll
-                        // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
-                        $('html, body').animate({
-                            scrollTop: $(hash).offset().top
-                        }, 500, function () {
-                            // Add hash (#) to URL when done scrolling (default click behavior)
-                            var noHashURL = window.location.href.replace(/#.*$/, '');
-                            window.history.replaceState('', document.title, noHashURL)
-                        });
-                    } // End if
-                });
-            });
-</script>
-<script>
-            $(document).ready(function () {
-                $('.popup-gallery').magnificPopup({
-                    delegate: 'a',
-                    type: 'image',
-                    tLoading: 'Loading image #%curr%...',
-                    mainClass: 'mfp-img-mobile',
-                    gallery: {
-                        enabled: true,
-                        navigateByImgClick: true,
-                        preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
-                    },
-                    image: {
-                        tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-                        titleSrc: function (item) {
-                            return item.el.attr('title') + '<small>by PTB Team</small>';
-                        }
-                    }
-                });
-            });
-</script>
-       <script>
-            $(function () {
-                setIFrameSize();
-                $(window).resize(function () {
-                    setIFrameSize();
-                });
-            });
-            function setIFrameSize() {
-                var ogWidth = 700;
-                var ogHeight = 600;
-                var ogRatio = ogWidth / ogHeight;
-                var windowWidth = $(window).width();
-                if (windowWidth < 480) {
-                    var parentDivWidth = $(".iframe-class").parent().width();
-                    var newHeight = (parentDivWidth / ogRatio);
-                    $(".iframe-class").addClass("iframe-class-resize");
-                    $(".iframe-class-resize").css("width", parentDivWidth);
-                    $(".iframe-class-resize").css("height", newHeight);
-                } else {
-                    $(".iframe-class").removeClass("iframe-class-resize").css({ width: '', height: '' });
+    <script>
+        $('.new-sp').owlCarousel({
+            loop: false,
+            margin: 10,
+            nav: true,
+            // autoplay:true,
+            responsive: {
+                0: {
+                    items: 2
+                },
+                600: {
+                    items: 3
+                },
+                1000: {
+                    items: 4
                 }
             }
-        </script>
+        })
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Add smooth scrolling to all links
+            $("a").on('click', function (event) {
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+                    // Store hash
+                    var hash = this.hash;
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 500, function () {
+                        // Add hash (#) to URL when done scrolling (default click behavior)
+                        var noHashURL = window.location.href.replace(/#.*$/, '');
+                        window.history.replaceState('', document.title, noHashURL)
+                    });
+                } // End if
+            });
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.popup-gallery').magnificPopup({
+                delegate: 'a',
+                type: 'image',
+                tLoading: 'Loading image #%curr%...',
+                mainClass: 'mfp-img-mobile',
+                gallery: {
+                    enabled: true,
+                    navigateByImgClick: true,
+                    preload: [0, 1] // Will preload 0 - before current, and 1 after the current image
+                },
+                image: {
+                    tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+
+                }
+            });
+        });
+    </script>
+    <script>
+        $(function () {
+            setIFrameSize();
+            $(window).resize(function () {
+                setIFrameSize();
+            });
+        });
+        function setIFrameSize() {
+            var ogWidth = 700;
+            var ogHeight = 600;
+            var ogRatio = ogWidth / ogHeight;
+            var windowWidth = $(window).width();
+            if (windowWidth < 480) {
+                var parentDivWidth = $(".iframe-class").parent().width();
+                var newHeight = (parentDivWidth / ogRatio);
+                $(".iframe-class").addClass("iframe-class-resize");
+                $(".iframe-class-resize").css("width", parentDivWidth);
+                $(".iframe-class-resize").css("height", newHeight);
+            } else {
+                $(".iframe-class").removeClass("iframe-class-resize").css({ width: '', height: '' });
+            }
+        }
+    </script>
 }
