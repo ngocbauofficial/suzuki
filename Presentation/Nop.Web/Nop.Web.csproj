@@ -633,6 +633,7 @@
     <Content Include="Plugins\Widgets.NivoSlider\Views\WidgetsNivoSlider\Configure.cshtml" />
     <Content Include="Plugins\Widgets.NivoSlider\Views\WidgetsNivoSlider\PublicInfo.cshtml" />
     <Content Include="Plugins\Widgets.NivoSlider\web.config" />
+    <Content Include="App_Data\suzukicar_com_vn_.bak" />
     <None Include="Properties\PublishProfiles\loca.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
