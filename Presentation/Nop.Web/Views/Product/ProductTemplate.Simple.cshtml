@@ -544,6 +544,16 @@
 @Html.Action("RelatedProducts", "Product", new { productId = Model.Id })
 @section scripts{
     <script>
+        //form popup
+        $(document).ready(function () {
+            if ($.cookie('form') == null) {
+                setTimeout(function () { $('#myModalform').modal('show'); },
+                    10000);
+                $.cookie('form', '7');
+            }
+        });
+    </script>
+    <script>
         $('.new-sp').owlCarousel({
             loop: false,
             margin: 10,

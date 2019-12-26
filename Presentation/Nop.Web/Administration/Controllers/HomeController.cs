@@ -29,6 +29,7 @@ namespace Nop.Admin.Controllers
         private readonly IProductService _productService;
         private readonly IOrderService _orderService;
         private readonly ICustomerService _customerService;
+        private readonly CustomerSettings _customerSettings;
         private readonly IReturnRequestService _returnRequestService;
         private readonly IWorkContext _workContext;
         private readonly ICacheManager _cacheManager;
@@ -44,6 +45,7 @@ namespace Nop.Admin.Controllers
             IProductService productService,
             IOrderService orderService,
             ICustomerService customerService,
+                CustomerSettings customerSettings,
             IReturnRequestService returnRequestService,
             IWorkContext workContext,
             ICacheManager cacheManager)
@@ -55,6 +57,7 @@ namespace Nop.Admin.Controllers
             this._productService = productService;
             this._orderService = orderService;
             this._customerService = customerService;
+            this._customerSettings = customerSettings;
             this._returnRequestService = returnRequestService;
             this._workContext = workContext;
             this._cacheManager = cacheManager;
@@ -159,9 +162,8 @@ namespace Nop.Admin.Controllers
 
             var model = new CommonStatisticsModel();
 
-            model.NumberOfOrders = _orderService.SearchOrders(
-                pageIndex: 0, 
-                pageSize: 1).TotalCount;
+            model.NumberOfOrders = _customerService.GetOnlineCustomers(DateTime.UtcNow.AddMinutes(-_customerSettings.OnlineCustomerMinutes),
+                null, 0, 1).TotalCount;
 
             model.NumberOfCustomers = _customerService.GetAllCustomers(
                 customerRoleIds: new [] { _customerService.GetCustomerRoleBySystemName(SystemCustomerRoleNames.Registered).Id }, 

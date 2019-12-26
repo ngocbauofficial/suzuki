@@ -63,6 +63,8 @@ namespace Nop.Core.Domain.Stores
 
         public string PhonePhongDichVu { get; set; }
 
+        public string PhoneFooter { get; set; }
+
         public string PhoneCSKH { get; set; }
         public string Fax { get; set; }
         public string ShowRoom { get; set; }

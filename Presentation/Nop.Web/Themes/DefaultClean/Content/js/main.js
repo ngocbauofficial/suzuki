@@ -39,7 +39,9 @@ $(document).ready(function () {
         slidesPerView: 4,
         spaceBetween: 0,
         // init: false,
+        autoplay:5000,
         loop: false,
+      
         pagination: {
             el: '.swiper-pagination',
             clickable: true,
@@ -49,16 +51,22 @@ $(document).ready(function () {
                 slidesPerView: 2,
             },
             768: {
+               
                 slidesPerView: 2,
             },
             640: {
+                autoplay: 5000,
+                speed: 800,
                 slidesPerView: 1,
             },
             320: {
+                autoplay: 5000,
+                speed: 800,
                 slidesPerView: 1,
             }
         }
     });
+ 
     $('.owl-carousel').owlCarousel({
         loop: true,
         margin: 10,

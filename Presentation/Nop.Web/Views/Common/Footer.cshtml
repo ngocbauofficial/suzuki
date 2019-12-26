@@ -12,6 +12,7 @@
     var phoneCSKH = storeContext.CurrentStore.PhoneCSKH;
     var Email = storeContext.CurrentStore.CompanyEmail;
     var Fax = storeContext.CurrentStore.Fax;
+    var phonefooter = storeContext.CurrentStore.PhoneFooter;
 }
 
 <footer>
@@ -77,7 +78,7 @@
                         <a href="/tim-kiem-dai-ly"><img src="~/Themes/DefaultClean/Content/images/1.png" alt=""></a>
                     </div>
                     <div class="col-md-12">
-                        <a href="/tim-kiem-dai-ly">Tìm đại lý</a>
+                        <a href="/tim-kiem-dai-ly">Bảng Giá Xe</a>
                     </div>
                 </div>
             </div>
@@ -125,20 +126,19 @@
                 </li>
                 <li class=" col-md-3 col-sm-6 pr-2 swiper-slide pt-3 pb-2">
                     <a href="/tim-kiem-dai-ly" class="text-center">
-                        <img src="~/Themes/DefaultClean/Content/images/1.png" alt="">Tìm đại
-                        lý
+                        <img src="~/Themes/DefaultClean/Content/images/1.png" alt="">Bảng Giá Xe
                     </a>
                 </li>
 
                 <li class=" col-md-3 col-sm-6 pr-2 swiper-slide pt-3 pb-2 ">
                     <a href="/tai-brochure" class="text-center">
-                        <img src="~/Themes/DefaultClean/Content/images/3.png" alt="">Tải brochure
+                        <img src="~/Themes/DefaultClean/Content/images/3.png" alt="">Tải Brochure
                     </a>
                 </li>
                 <li class=" col-md-3 col-sm-6 pr-2 swiper-slide pt-3 pb-2">
                     <a href="@Url.RouteUrl("DuToanChiPhi")" class="text-center ">
-                        <img src="~/Themes/DefaultClean/Content/images/4.png" alt="">Dự toán tài
-                        chính
+                        <img src="~/Themes/DefaultClean/Content/images/4.png" alt="">Dự Toán Tài
+                        Chính
                     </a>
                 </li>
             </ul>
@@ -146,9 +146,60 @@
     </div>
 </div>
 
-@{Html.RenderAction("_GetTopicBySystem", "Topic", new { systemname = "phonefooter" });}
+
+<div id="myModal" class="modal">
+    <span id="closemodel" class="close">&times;</span>
+    <a href="#">
+        <img class="modal-content" src="~/Content/Images/uploaded/POPUP.jpg" alt="" id="img01">
+    </a>
+
+</div>
+
+
+
+<div class="modal" id="myModalform">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                Modal body..
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="phonering-alo-phone phonering-alo-green phonering-alo-show" id="phonering-alo-phoneIcon">
+    <div class="phone-number">
+        @phonefooter
+    </div>
+    <div class="phonering-alo-ph-circle">
+
+    </div>
+    <div class="phonering-alo-ph-circle-fill">
+
+    </div>
+    <a href="tel:+@phonefooter.Replace(" ", "")" class="pps-btn-img" title="Liên hệ">
+        <div class="phonering-alo-ph-img-circle">
+
+        </div>
+    </a>
+</div>
 @section scripts {
     @RenderSection("scripts", false)
+
 }
 @section Css {
     @RenderSection("Css", false)

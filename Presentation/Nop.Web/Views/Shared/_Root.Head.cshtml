@@ -3,18 +3,20 @@
 @using Nop.Core.Infrastructure;
 @{
     var displayMiniProfiler = EngineContext.Current.Resolve<Nop.Core.Domain.StoreInformationSettings>().DisplayMiniProfilerInPublicStore;
-	 Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/bootstrap.min.css");
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/bootstrap.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/owl.carousel.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/owl.theme.default.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/lightslider.min.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/jquery.mmenu.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/font.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/jquery.mmenu.positioning.css");
+    Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/mmenu.themes.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/site-pack.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/style.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/responsive.css");
     Html.AddScriptParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/js/jquery-3.3.1.min.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/jquery.mmenu.js", true);
+    Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/jquery.cookie.min.js", true);
     //X-UA-Compatible tag
     var commonSettings = EngineContext.Current.Resolve<CommonSettings>();
     if (commonSettings.RenderXuaCompatible)
@@ -62,52 +64,92 @@
     @Html.NopCssFiles(this.Url, ResourceLocation.Foot)
     @Html.NopScripts(this.Url, ResourceLocation.Foot)
     @RenderSection("scripts", required: false)
-      <script>
-	     $(function () {
-        $('nav#menu').mmenu({
-            "extensions": ["position-right"],
-            "navbars": [
+    <script>
+        new Mmenu(document.querySelector('#menu'), {
+            extensions: [
+                "position-back",
+                "position-right", "theme-dark", "border-none", "pagedim-black"
+            ],
+            navbars: [
+               {
+                    content: ['prev', 'breadcrumbs', 'close']
+                }, {
+                    position: 'bottom',
+                    content: ['<a href="#" target="_blank">Copyright © 2015 SUZUKI</a>']
+                }
+            ,{
+                    height: 3,
+                    content: [
+                        '<a href="#/" class="fa fa-phone"></a>',
+                        '<img alt="" src="/content/images/thumbs/0000101.jpeg" />', 
+                        '<a href="#/" class="fa fa-envelope"></a>'
+                    ]
+                },
                 {
-                    "position": "top",
+                    "position": "bottom",
                     "content": [
-                        "breadcrumbs",
-                        "close"
+                        "<a class='fa fa-envelope' href='#/'></a>",
+                        "<a class='fa fa-twitter' href='#/'></a>",
+                        "<a class='fa fa-facebook' href='#/'></a>"
                     ]
                 }
             ]
         });
-    });
-    $('#menu li a').click(function () {
-        //console.log("Clicked");
-        $('#menu li a.active-2').removeClass('active-2');
-        $(this).addClass('active-2');
-    });
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 850) {
-            $('.navi').addClass('fixed-2');
-        } else {
-            $('.navi').removeClass('fixed-2');
+
+        document.addEventListener('click', function (evnt) {
+            var anchor = evnt.target.closest('a[href^="#/"]');
+        });
+         
+
+        $('#menu li a').click(function () {
+            //console.log("Clicked");
+            $('#menu li a.active-2').removeClass('active-2');
+            $(this).addClass('active-2');
+        });
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 850) {
+                $('.navi').addClass('fixed-2');
+            } else {
+                $('.navi').removeClass('fixed-2');
+            }
+        })
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 270) {
+                $('.navi-2').addClass('fixed-2');
+            } else {
+                $('.navi-2').removeClass('fixed-2');
+            }
+        })
+        $(".toggle-next ").click(function () {
+            event.preventDefault();
+            $(this).next().slideToggle();
+            $(this).toggleClass('active');
+        });
+        $(".menu-toggle").click(function () {
+            $(".menu-mb-navi").toggle();
+        });
+        $(".menu-mb-navi li a").click(function () {
+            $(".menu-mb-navi").addClass('.close-item');
+            $(".menu-mb-navi").toggle();
+        });
+    </script>
+
+    <script>
+        //modal popup
+        $(document).ready(function () {
+            if ($.cookie('pop') == null) {
+                $('#myModal').css("display", "block");
+                $.cookie('pop', '7');
+            }
+        });
+        // Get the <span> element that closes the modal
+        var closemodel = document.getElementById("closemodel");
+        // When the user clicks on <span> (x), close the modal
+        closemodel.onclick = function () {
+            $('#myModal').css("display", "none");
         }
-    })
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 270) {
-            $('.navi-2').addClass('fixed-2');
-        } else {
-            $('.navi-2').removeClass('fixed-2');
-        }
-    })
-    $(".toggle-next ").click(function () {
-        event.preventDefault();
-        $(this).next().slideToggle();
-        $(this).toggleClass('active');
-    });
-    $(".menu-toggle").click(function(){
-        $(".menu-mb-navi").toggle();
-    });
-    $(".menu-mb-navi li a").click(function () {
-        $(".menu-mb-navi").addClass('.close-item');
-        $(".menu-mb-navi").toggle();
-    });
-	  </script>
+    </script>
+
+ 
 </body>
 </html>
