@@ -107,11 +107,9 @@
         margin: 0;
     }
     .slide-2 {
-        display: none;
+        width:100%;
     }
-    .slide-2-mobile {
-        display: block;
-    }
+
     .swiper-wrapper li a {
         font-size: 15px;
     }
@@ -127,6 +125,10 @@
     .stick a {
         font-size: 10px;
     }
+    .quick-button li {
+        width: 50%;
+    }
+
     .map-location {
         width: 100%;
     }
@@ -335,9 +337,7 @@
     #menu img {
         width: 45%;
     }
-    .slide-2-mobile {
-        display: block;
-    }
+  
     .swiper-wrapper li.test-drive a {
         font-size: 15px;
     }
