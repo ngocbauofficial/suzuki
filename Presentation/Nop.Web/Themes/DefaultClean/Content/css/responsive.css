@@ -72,6 +72,33 @@
     .lien-he a {
         font-size: 13px;
     }
+    .quick-button li.find-dealer a {
+        background-position: 45px 12px;
+    }
+
+    .quick-button li.find-dealer:hover a {
+        background-position: 45px -138px;
+    
+
+    }
+    .quick-button li.find-dealer:hover a {
+        background-position: 45px -138px;
+    }
+
+    .quick-button li.price-calculator a {
+        background-position: 45px -898px;
+    }
+    .quick-button .find-dealer {
+        border-left: 0px;
+    }
+
+    .quick-button .price-calculator {
+        border-left: 0px;
+    }
+
+    .quick-button .test-drive {
+        border-left: 0px;
+    }
     .mobile-menu {
         display: block;
     }

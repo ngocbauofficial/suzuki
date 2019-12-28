@@ -1067,5 +1067,57 @@ namespace Nop.Web.Controllers
         }
 
         #endregion
+        [HttpPost]
+        public ActionResult SendInfo(FormCollection form)
+        {
+           
+             
+               
+            
+                string subject = "Đăng Ký Lái Thử Suzuki";
+
+                var emailAccount = _emailAccountService.GetEmailAccountById(_emailAccountSettings.DefaultEmailAccountId);
+                if (emailAccount == null)
+                    emailAccount = _emailAccountService.GetAllEmailAccounts().FirstOrDefault();
+                if (emailAccount == null)
+                    throw new Exception("No email account could be loaded");
+
+                string from;
+                string fromName;
+
+                //required for some SMTP servers
+
+                from = emailAccount.Email;
+                fromName = emailAccount.DisplayName;
+                string body = "";
+
+              
+                    body = string.Format("<strong>{0}</strong>: {1} - {2} <br /><br />Email :{3} <br />Mua Xe Khi Nào: {4} ",
+                                 Server.HtmlEncode(form["gender"].ToString()),
+                        Server.HtmlEncode(form["name"].ToString()),
+                  Server.HtmlEncode(form["phone"].ToString()),
+               Server.HtmlEncode(form["time"].ToString()),
+                  Server.HtmlEncode(form["email"].ToString()));
+               
+
+
+
+                _queuedEmailService.InsertQueuedEmail(new QueuedEmail
+                {
+                    From = from,
+                    FromName = fromName,
+                    To = emailAccount.Email,
+                    ToName = emailAccount.DisplayName,
+                    ReplyTo = "",
+                    ReplyToName = form["name"].ToString(),
+                    Priority = QueuedEmailPriority.High,
+                    Subject = subject,
+                    Body = body,
+                    CreatedOnUtc = DateTime.Now,
+                    EmailAccountId = emailAccount.Id
+                });
+                return Json(true);
+        }
+
     }
 }
