@@ -46,6 +46,8 @@ namespace Nop.Admin.Models.News
         [UIHint("Picture")]
         public int PictureId { get; set; }
 
+        [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.Category")]
+        public int? CategoryId { get; set; }
 
         [NopResourceDisplayName("Admin.ContentManagement.News.NewsItems.Fields.Full")]
         [AllowHtml]

@@ -363,7 +363,7 @@
     display: -ms-flexbox;
     display: flex;
     min-height: var(--mm-navbar-size);
-    border-bottom: 1px solid var(--mm-color-border);
+   
     background: var(--mm-color-background);
     color: var(--mm-color-text-dimmed);
     text-align: center;

@@ -27,6 +27,10 @@ namespace Nop.Core.Domain.News
         public int PictureId { get; set; }
 
 
+
+        public int? CategoryId { get; set; }
+
+
         /// <summary>
         /// Gets or sets the short text
         /// </summary>
