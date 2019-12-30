@@ -7,13 +7,13 @@
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/popper.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/lightslider.min.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/owl.carousel.min.js", true);
-  Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/swiper.min.js", true);
+    Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/swiper.min.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/main.js", true);
 }
-     <section class="slide-background">
-         @Html.Widget("home_page_top")
-    </section>   
-        @Html.Widget("home_page_before_categories")
+<section class="slide-background">
+    @Html.Widget("home_page_top")
+</section>
+@Html.Widget("home_page_before_categories")
 <div class="slide-2 ">
     <div class="container">
         <div class="quick-button">
@@ -27,23 +27,35 @@
     </div>
 </div>
 
-        @Html.Action("ManufacturerHomePage", "Catalog")
-        @Html.Widget("home_page_before_products")
-        @Html.Widget("home_page_before_best_sellers")
-        @Html.Widget("home_page_before_news")
-        @Html.Action("HomePageNews", "News")
-        @Html.Widget("home_page_before_poll")
-        @*@Html.Partial("_Findvendor")*@
-        @Html.Action("HomePagePolls", "Poll")
-        @Html.Widget("home_page_bottom")
+@Html.Action("ManufacturerHomePage", "Catalog")
+@Html.Widget("home_page_before_products")
+@Html.Widget("home_page_before_best_sellers")
+@Html.Widget("home_page_before_news")
+@Html.Action("HomePageNews", "News")
+@Html.Widget("home_page_before_poll")
+@*@Html.Partial("_Findvendor")*@
+@Html.Action("HomePagePolls", "Poll")
+@Html.Widget("home_page_bottom")
+<div id="myModal" style="background:#000000ab" class="modal">
+
+    <a href="#">
+        <img class="modal-content" src="~/Content/Images/uploaded/POPUP.jpg" alt="" id="img01">
+        <span id="closemodel" class="close">&times;</span>
+    </a>
+
+</div>
+
 @section scripts{
-<script>
+    <script>
         $('.owl-carousel').owlCarousel({
             loop: true,
             margin: 10,
             responsiveClass: true,
             arrows: false,
             dots: false,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true
             responsive: {
                 0: {
                     items: 2,
@@ -60,5 +72,5 @@
                 }
             }
         })
-</script>
-    }
+    </script>
+}

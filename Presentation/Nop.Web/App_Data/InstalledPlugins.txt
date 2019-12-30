@@ -1,5 +1,4 @@
 DiscountRequirement.HadSpentAmount
-DiscountRequirement.HasAllProducts
 DiscountRequirement.HasOneProduct
 DiscountRequirement.MustBeAssignedToCustomerRole
 CurrencyExchange.ECB
@@ -22,3 +21,4 @@ Tax.FixedRate
 Tax.CountryStateZip
 Widgets.GoogleAnalytics
 Widgets.NivoSlider
+Technoscore.HeaderBanner

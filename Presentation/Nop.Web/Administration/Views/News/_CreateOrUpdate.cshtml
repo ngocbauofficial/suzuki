@@ -69,12 +69,28 @@
                         @Html.ValidationMessageFor(model => model.Short)
                     </div>
                 </div>
+                @{
+                    List<SelectListItem> listItems = new List<SelectListItem>();
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Tin Suzuki",
+                        Value = "1",
+                    
+                    });
+                    listItems.Add(new SelectListItem
+                    {
+                        Text = "Tin Khuyến Mãi",
+                        Value = "2",
+
+                    });
+
+                }
                 <div class="form-group">
                     <div class="col-md-3">
                         @Html.NopLabelFor(model => model.CategoryId)
                     </div>
                     <div class="col-md-9">
-                        @Html.NopDropDownListFor(model => model.CategoryId, new SelectList(new List<String>() { }),"Chọn")
+                        @Html.NopDropDownListFor(model => model.CategoryId, listItems, "Chọn")
                         @Html.ValidationMessageFor(model => model.CategoryId)
                     </div>
                 </div>

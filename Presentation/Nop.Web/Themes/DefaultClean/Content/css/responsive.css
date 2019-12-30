@@ -285,6 +285,9 @@
     .fix-bot {
         display: none !important;
     }
+    .quick-button li {
+        width: 100% !important;
+    }
 	.contact-font span,.text-left span,.follow-title{
 	font-size:14px;	
 	}
@@ -382,9 +385,7 @@
     .slide-3-mobile {
         display: block;
     }
-    header {
-        margin-bottom: 20px;
-    }
+
     .col-md-1 {
         display: none;
     }

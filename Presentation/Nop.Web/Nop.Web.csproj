@@ -55,13 +55,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    <Reference Include="Autofac, Version=4.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.4.4.0\lib\net45\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Integration.Mvc, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\Autofac.Mvc5.3.3.4\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Autofac.Mvc5.4.0.0\lib\net451\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -588,6 +586,12 @@
     <Content Include="Content\samples\p_attribute_print_1.jpg" />
     <Content Include="Content\samples\p_attribute_print_2.jpg" />
     <Content Include="favicon.ico" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Data\pages.sql" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Description.txt" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\logo.jpg" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Nop.Plugin.Technoscore.HeaderBanner.dll" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Nop.Plugin.Technoscore.HeaderBanner.pdb" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Scripts\jquery.header.min.js" />
     <Content Include="Plugins\Widgets.NivoSlider\Content\nivoslider\nivo-slider.css" />
     <Content Include="Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner1.jpg" />
     <Content Include="Plugins\Widgets.NivoSlider\Content\nivoslider\sample-images\banner2.jpg" />
@@ -635,6 +639,12 @@
     <Content Include="Plugins\Widgets.NivoSlider\Views\WidgetsNivoSlider\PublicInfo.cshtml" />
     <Content Include="Plugins\Widgets.NivoSlider\web.config" />
     <Content Include="App_Data\suzukicar_com_vn_.bak" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Nop.Plugin.Technoscore.HeaderBanner.dll.config" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Views\Configure.cshtml" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Views\CreateWidget.cshtml" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Views\Edit.cshtml" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\Views\PublicInfo.cshtml" />
+    <Content Include="Plugins\Technoscore.HeaderBanner\web.config" />
     <None Include="Properties\PublishProfiles\loca.pubxml" />
     <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

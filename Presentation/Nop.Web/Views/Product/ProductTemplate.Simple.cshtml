@@ -10,6 +10,7 @@
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/bootstrap.min.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/lightslider.min.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/owl.carousel.min.js", true);
+    Html.AddScriptParts(ResourceLocation.Foot, "~/Scripts/jquery.validate.min.js", true);
     Html.AddScriptParts(ResourceLocation.Foot, "~/Themes/DefaultClean/Content/js/main.js", true);
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/sanham.css");
     Html.AddCssFileParts(ResourceLocation.Head, "~/Themes/DefaultClean/Content/css/magnific-popup.css");
@@ -543,25 +544,25 @@
 </section>
 @Html.Action("RelatedProducts", "Product", new { productId = Model.Id })
 
-<div class="modal" id="myModalform">
+<div class="modal" id="myModalform" style="z-index:999999999">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
+                <span class="modal-title">Đăng ký nhận thông tin</span>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
             <!-- Modal body -->
             <div class="modal-body">
-                <form action="#" id="form-sendproduct">
+                <form action="#" method="post" id="form-sendproduct">
                     <div class="row">
                         <div class="col-7">
                             <div class="form-group">
                                 <label class="col-sm-3">Họ Và Tên</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="name" type="text" />
+                                    <input class="form-control" id="name" name="name" type="text" />
                                 </div>
                             </div>
                         </div>
@@ -569,7 +570,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3">Giới Tính</label>
                                 <div class="col-sm-9">
-                                    <select class="form-control" name="gender">
+                                    <select class="form-control" id="gender" name="gender">
                                         <option value="Ông">Nam</option>
                                         <option value="Bà">Nữ</option>
                                     </select>
@@ -580,7 +581,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3">Email</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="email" type="text" />
+                                    <input class="form-control" id="email" name="email" type="text" />
                                 </div>
                             </div>
                         </div>
@@ -588,17 +589,83 @@
                             <div class="form-group">
                                 <label class="col-sm-3">Điện Thoại</label>
                                 <div class="col-sm-9">
-                                    <input class="form-control" name="phone" type="text" />
+                                    <input class="form-control" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" id="phone" name="phone" type="text" />
                                 </div>
                             </div>
                         </div>
+                        <style>
+                            .error{
+                                color:red;
+                            }
+                            .checkbox-time + label {
+                                font-weight: 400;
+                                position: relative;
+                                padding-left: 15px;
+                                cursor: pointer;
+                                display: inline-block;
+                                height: 16px;
+                                margin-bottom: 0px;
+                                line-height: 25px;
+                            }
+
+                            .checkbox-time:checked, .checkbox-time:not(:checked) {
+                                position: absolute;
+                                left: -9999px;
+                                opacity: 0;
+                            }
+
+                            .checkbox-time {
+                                box-sizing: border-box;
+                                padding: 0;
+                            }
+
+                            .checkbox-time + label:before, .checkbox-time:not(.filled-in) + label:after {
+                                content: '';
+                                position: absolute;
+                                top: 5px;
+                                left: 0;
+                                width: 15px;
+                                height: 15px;
+                                z-index: 0;
+                                border: 2px solid #2c545c;
+                                border-radius: 1px;
+                                margin-top: 2px;
+                                -webkit-transition: .2s;
+                                -o-transition: .2s;
+                                transition: .2s;
+                            }
+
+                            .checkbox-time:not(.filled-in) + label:after {
+                                border: 0;
+                                -webkit-transform: scale(0);
+                                -ms-transform: scale(0);
+                                transform: scale(0);
+                            }
+
+                            .checkbox-time:checked + label:before {
+                                top: -4px;
+                                left: -5px;
+                                width: 10px;
+                                height: 19px;
+                                border-top: 2px solid transparent;
+                                border-left: 2px solid transparent;
+                                border-right: 2px solid #9f2a2a;
+                                border-bottom: 2px solid #9f2a2a;
+                                -webkit-transform: rotate(40deg);
+                                -ms-transform: rotate(40deg);
+                                transform: rotate(40deg);
+                                -webkit-transform-origin: 100% 100%;
+                                -ms-transform-origin: 100% 100%;
+                                transform-origin: 100% 100%;
+                            }
+                        </style>
                         <div class="col-12">
                             <div class="form-group">
                                 <label class="col-sm-3">Bạn Dự Tính Mua Xe Khi Nào</label>
                                 <div class="col-sm-9">
-                                    <label class="checkbox-inline"><input type="checkbox" name="time" value="tháng này">Tháng Này</label>
-                                    <label class="checkbox-inline"><input type="checkbox" name="time" value="tháng sau">Tháng Sau</label>
-                                    <label class="checkbox-inline"><input type="checkbox" name="time" value="chưa mưa">Chưa Mua</label>
+                                    <label class="checkbox-inline"><input type="checkbox" class="checkbox-time" name="time"  id="time1" value="tháng này"><label for="time1"></label>Tháng Này</label>
+                                    <label class="checkbox-inline"><input type="checkbox" class="checkbox-time" name="time"  id="time2" value="tháng sau"><label for="time2"></label>Tháng Sau</label>
+                                    <label class="checkbox-inline"><input type="checkbox" class="checkbox-time" name="time" id="time3" value="chưa mưa"><label for="time3"></label>Chưa Mua</label>
                                 </div>
                             </div>
                         </div>
@@ -609,15 +676,60 @@
 
             <!-- Modal footer -->
             <div class="modal-footer">
+                <button type="submit" id="clickformsendinfo" class="btn btn-success">Gửi</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                <button type="submit" id="clickformsendinfo" class="btn btn-green">Gửi</button>
             </div>
 
         </div>
     </div>
 </div>
+
 @section scripts{
+
     <script>
+        $("input:checkbox").on('click', function () {
+            // in the handler, 'this' refers to the box clicked on
+            var $box = $(this);
+            if ($box.is(":checked")) {
+                // the name of the box is retrieved using the .attr() method
+                // as it is assumed and expected to be immutable
+                var group = "input:checkbox[name='" + $box.attr("name") + "']";
+                // the checked state of the group/box on the other hand will change
+                // and the current value is retrieved using .prop() method
+                $(group).prop("checked", false);
+                $box.prop("checked", true);
+            } else {
+                $box.prop("checked", false);
+            }
+        });
+          $.validator.addMethod("cRequired", $.validator.methods.required,"Thông tin này là bắc buộc");
+
+    $(function () {
+        $('#form-sendproduct').validate({
+            rules: {
+                name: { // registerdate
+                    cRequired: true,
+                },
+                gender: { // registerdate
+                    cRequired: true,
+                },
+                email: { // registerdate
+                    cRequired: true,
+                },
+                phone: { // registerdate
+                    cRequired: true,
+                },
+                time: { // registerdate
+                    cRequired: true,
+                },
+            },
+            errorElement: 'label',
+            errorPlacement: function (error, element) {
+                error.insertAfter(element);
+            },
+
+        });
+    });
         //form popup
         $(document).ready(function () {
             if ($.cookie('form') == null) {
@@ -630,13 +742,18 @@
             }
         });
         $('#clickformsendinfo').click(function () {
+            var $form = $('#form-sendproduct');
+
+            // check if the input is valid
+            if (!$form.valid()) return false;
             $.ajax({
                 type: 'POST',
                 url: '/Common/SendInfo',
                 data: $('#form-sendproduct').serialize(),
                 success: function (data) {
                     if (data == true) {
-
+                        $('#myModalform').modal('hide');
+                        alert('Gửi đăng ký nhận thông tin thành công !')
                     }
                 }
             });
