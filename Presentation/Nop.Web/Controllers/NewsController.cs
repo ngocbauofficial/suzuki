@@ -262,7 +262,74 @@ namespace Nop.Web.Controllers
 
             return View(model);
         }
+        public ActionResult NewsListKM(NewsPagingFilteringModel command)
+        {
+            if (!_newsSettings.Enabled)
+                return RedirectToRoute("HomePage");
 
+            var model = new NewsItemListModel();
+            model.WorkingLanguageId = _workContext.WorkingLanguage.Id;
+
+            if (command.PageSize <= 0) command.PageSize = _newsSettings.NewsArchivePageSize;
+            if (command.PageNumber <= 0) command.PageNumber = 1;
+
+            var newsItems = _newsService.GetNewsByCategory(_workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id,
+                command.PageNumber - 1, command.PageSize, false, 2);
+            model.PagingFilteringContext.LoadPagedList(newsItems);
+
+            model.NewsItems = newsItems
+                .Select(x =>
+                {
+                    var newsModel = new NewsItemModel();
+                    int pictureSize = _mediaSettings.ManufacturerThumbPictureSize;
+                    var defaultPictureModel = new PictureModel
+                    {
+                        ImageUrl = _pictureService.GetPictureUrl(x.PictureId, pictureSize),
+                        FullSizeImageUrl = _pictureService.GetPictureUrl(x.PictureId, 0, true),
+
+                    };
+                    newsModel.PictureModel = defaultPictureModel;
+                    PrepareNewsItemModel(newsModel, x, false);
+                    return newsModel;
+                })
+                .ToList();
+
+            return View(model);
+        }
+        public ActionResult NewsListSuzuki(NewsPagingFilteringModel command)
+        {
+            if (!_newsSettings.Enabled)
+                return RedirectToRoute("HomePage");
+
+            var model = new NewsItemListModel();
+            model.WorkingLanguageId = _workContext.WorkingLanguage.Id;
+
+            if (command.PageSize <= 0) command.PageSize = _newsSettings.NewsArchivePageSize;
+            if (command.PageNumber <= 0) command.PageNumber = 1;
+
+            var newsItems = _newsService.GetNewsByCategory(_workContext.WorkingLanguage.Id, _storeContext.CurrentStore.Id,
+                command.PageNumber - 1, command.PageSize, false,1);
+            model.PagingFilteringContext.LoadPagedList(newsItems);
+
+            model.NewsItems = newsItems
+                .Select(x =>
+                {
+                    var newsModel = new NewsItemModel();
+                    int pictureSize = _mediaSettings.ManufacturerThumbPictureSize;
+                    var defaultPictureModel = new PictureModel
+                    {
+                        ImageUrl = _pictureService.GetPictureUrl(x.PictureId, pictureSize),
+                        FullSizeImageUrl = _pictureService.GetPictureUrl(x.PictureId, 0, true),
+
+                    };
+                    newsModel.PictureModel = defaultPictureModel;
+                    PrepareNewsItemModel(newsModel, x, false);
+                    return newsModel;
+                })
+                .ToList();
+
+            return View(model);
+        }
         public ActionResult ListRss(int languageId)
         {
             var feed = new SyndicationFeed(

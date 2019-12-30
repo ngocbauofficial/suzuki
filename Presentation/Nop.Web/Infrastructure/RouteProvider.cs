@@ -151,6 +151,16 @@ namespace Nop.Web.Infrastructure
                             new { controller = "News", action = "List" },
                             new[] { "Nop.Web.Controllers" });
 
+            routes.MapLocalizedRoute("NewsSuzuki",
+                           "tin-suzuki",
+                           new { controller = "News", action = "NewsListSuzuki" },
+                           new[] { "Nop.Web.Controllers" });
+
+            routes.MapLocalizedRoute("NewsPromotionsSuzuki",
+                           "tin-khuyen-mai",
+                           new { controller = "News", action = "NewsListKM" },
+                           new[] { "Nop.Web.Controllers" });
+
             //forum
             routes.MapLocalizedRoute("Boards",
                             "boards",

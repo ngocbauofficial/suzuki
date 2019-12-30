@@ -41,6 +41,9 @@ namespace Nop.Services.News
         IPagedList<NewsItem> GetAllNews(int languageId = 0, int storeId = 0,
             int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false);
 
+        IPagedList<NewsItem> GetNewsByCategory(int languageId = 0, int storeId = 0,
+         int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false, int category = 0);
+
         /// <summary>
         /// Inserts a news item
         /// </summary>

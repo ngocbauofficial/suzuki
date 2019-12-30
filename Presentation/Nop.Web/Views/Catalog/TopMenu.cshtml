@@ -44,11 +44,13 @@
             </ul>
         </li>
         <li>
-            <a href="@Url.RouteUrl("Blog")">Khuyến Mãi</a>
+            <span>Tin Tức </span>
+            <ul>
+                <li><a href="@Url.RouteUrl("NewsListSuzuki")">Tin Suzuki</a></li>
+                <li><a href="@Url.RouteUrl("NewsListKM")">Tin Khuyến Mãi</a></li>
+            </ul>
         </li>
-        <li>
-            <a href="@Url.RouteUrl("NewsArchive")">Tin Tức</a>
-        </li>
+      
         <li>
             <a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a>
         </li>
@@ -95,8 +97,15 @@
         </ul>
     </li>
 
-    <li><a href="@Url.RouteUrl("Blog")">Khuyến Mãi</a></li>
-    <li><a href="@Url.RouteUrl("NewsArchive")">tin tức</a></li>
+   
+ 
+    <li class="menu-2 aaa">
+        <a href="@Url.RouteUrl("NewsArchive")">Tin Tức<i class="fas fa-angle-down"></i></a>
+        <ul class="sub-lv2">
+            <li><a href="@Url.RouteUrl("NewsListSuzuki")">Tin Suzuki</a></li>
+            <li><a href="@Url.RouteUrl("NewsListKM")">Tin Khuyến Mãi</a></li>
+        </ul>
+    </li>
     <li>
         <a href="@Url.RouteUrl("ContactUs")">@T("ContactUs")</a>
     </li>

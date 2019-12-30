@@ -129,6 +129,47 @@ namespace Nop.Services.News
             var news = new PagedList<NewsItem>(query, pageIndex, pageSize);
             return news;
         }
+        public virtual IPagedList<NewsItem> GetNewsByCategory(int languageId = 0, int storeId = 0,
+         int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false,int category=0)
+        {
+            var query = _newsItemRepository.Table;
+            if (languageId > 0)
+                query = query.Where(n => languageId == n.LanguageId);
+            if (category > 0)
+            {
+                query = query.Where(x => x.CategoryId == category);
+            }
+            if (!showHidden)
+            {
+                var utcNow = DateTime.UtcNow;
+                query = query.Where(n => n.Published);
+                query = query.Where(n => !n.StartDateUtc.HasValue || n.StartDateUtc <= utcNow);
+                query = query.Where(n => !n.EndDateUtc.HasValue || n.EndDateUtc >= utcNow);
+            }
+            query = query.OrderByDescending(n => n.DisplayOrder);
+
+            //Store mapping
+            if (storeId > 0 && !_catalogSettings.IgnoreStoreLimitations)
+            {
+                query = from n in query
+                        join sm in _storeMappingRepository.Table
+                        on new { c1 = n.Id, c2 = "NewsItem" } equals new { c1 = sm.EntityId, c2 = sm.EntityName } into n_sm
+                        from sm in n_sm.DefaultIfEmpty()
+                        where !n.LimitedToStores || storeId == sm.StoreId
+                        select n;
+
+                //only distinct items (group by ID)
+                query = from n in query
+                        group n by n.Id
+                        into nGroup
+                        orderby nGroup.Key
+                        select nGroup.FirstOrDefault();
+                query = query.OrderByDescending(n => n.DisplayOrder);
+            }
+
+            var news = new PagedList<NewsItem>(query, pageIndex, pageSize);
+            return news;
+        }
 
         /// <summary>
         /// Inserts a news item
